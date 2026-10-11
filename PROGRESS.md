@@ -14,7 +14,7 @@ book-writer-mcp / Eden / Arcitext. Seed: `~/workspace/skills/matt-voice/`
 - [x] 1. voice-core: stylometry port, corpus store, fingerprint build
   (LOO bands), checker (+ integrity + avoid-list), exemplars, URL fetch.
 - [x] 2. Parity gate: Rust engine vs Python fixtures on the seed corpus.
-- [ ] 3. voice-mcp: stdio JSON-RPC server, 6 tools, protocol tests, smoke.
+- [x] 3. voice-mcp: stdio JSON-RPC server, 6 tools, protocol tests, smoke.
 - [ ] 4. voice-tui: ratatui front-end, snapshot smoke.
 - [ ] 5. voice-gui: gpui-ce 0.2.2 front-end, Xvfb smoke + screenshot.
 - [ ] 6. Gates: cargo test totals, clippy -D warnings, fmt, IDE gate on
@@ -40,3 +40,9 @@ book-writer-mcp / Eden / Arcitext. Seed: `~/workspace/skills/matt-voice/`
   0.002); checker deltas on holdouts match Python (1.196 / 1.088 /
   1.253). One real bug found+fixed by the gate: word counts must be
   taken after ligature normalization (7693 vs 7674 before the fix).
+- Stage 3 (2026-10-11): voice-mcp server done. cargo test -p voice-mcp:
+  3 unit (handshake/catalog, adversarial protocol, strict args) + 2
+  binary smoke (full client round trip incl. ingest → dry-run →
+  recompute → check with holdout delta 1.196; adversarial frames).
+  All pass. Two test-harness bugs fixed en route (shared temp dir race;
+  a hand-counted word expectation — the engine's 70 was right).
