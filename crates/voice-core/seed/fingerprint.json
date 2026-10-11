@@ -1,0 +1,254 @@
+{
+ "features": [
+  "punct:em_dash",
+  "punct:semicolon",
+  "punct:colon",
+  "punct:comma",
+  "punct:paren_open",
+  "punct:question",
+  "punct:hyphenated_compounds",
+  "sent_len_mean",
+  "sent_len_median",
+  "sent_pct_short_le10",
+  "sent_pct_long_ge30",
+  "hedges_per1k",
+  "assertives_per1k",
+  "first_person_per1k",
+  "pct_words_3plus_syll",
+  "fw:the",
+  "fw:and",
+  "fw:of",
+  "fw:a",
+  "fw:in",
+  "fw:to",
+  "fw:with",
+  "fw:for",
+  "fw:was",
+  "fw:that",
+  "fw:is",
+  "fw:this",
+  "fw:at",
+  "fw:as",
+  "fw:on",
+  "fw:from",
+  "fw:or",
+  "fw:by",
+  "fw:our",
+  "fw:we",
+  "fw:an",
+  "fw:be",
+  "fw:when",
+  "fw:not",
+  "fw:no",
+  "fw:are",
+  "fw:were",
+  "fw:these",
+  "fw:has",
+  "fw:had"
+ ],
+ "reference": {
+  "punct:em_dash": {
+   "mean": 0.358,
+   "sd": 0.801
+  },
+  "punct:semicolon": {
+   "mean": 1.08,
+   "sd": 1.634
+  },
+  "punct:colon": {
+   "mean": 6.03,
+   "sd": 4.86
+  },
+  "punct:comma": {
+   "mean": 66.103,
+   "sd": 18.722
+  },
+  "punct:paren_open": {
+   "mean": 11.915,
+   "sd": 6.007
+  },
+  "punct:question": {
+   "mean": 3.692,
+   "sd": 4.131
+  },
+  "punct:hyphenated_compounds": {
+   "mean": 18.34,
+   "sd": 9.421
+  },
+  "sent_len_mean": {
+   "mean": 24.923,
+   "sd": 2.0
+  },
+  "sent_len_median": {
+   "mean": 21.083,
+   "sd": 2.0
+  },
+  "sent_pct_short_le10": {
+   "mean": 13.883,
+   "sd": 2.759
+  },
+  "sent_pct_long_ge30": {
+   "mean": 24.483,
+   "sd": 3.246
+  },
+  "hedges_per1k": {
+   "mean": 2.608,
+   "sd": 2.164
+  },
+  "assertives_per1k": {
+   "mean": 2.58,
+   "sd": 2.291
+  },
+  "first_person_per1k": {
+   "mean": 12.803,
+   "sd": 10.583
+  },
+  "pct_words_3plus_syll": {
+   "mean": 27.317,
+   "sd": 3.452
+  },
+  "fw:the": {
+   "mean": 45.532,
+   "sd": 21.849
+  },
+  "fw:and": {
+   "mean": 39.077,
+   "sd": 7.815
+  },
+  "fw:of": {
+   "mean": 29.973,
+   "sd": 9.955
+  },
+  "fw:a": {
+   "mean": 20.357,
+   "sd": 7.306
+  },
+  "fw:in": {
+   "mean": 15.465,
+   "sd": 6.027
+  },
+  "fw:to": {
+   "mean": 19.238,
+   "sd": 7.468
+  },
+  "fw:with": {
+   "mean": 16.157,
+   "sd": 4.08
+  },
+  "fw:for": {
+   "mean": 10.725,
+   "sd": 3.945
+  },
+  "fw:was": {
+   "mean": 6.238,
+   "sd": 6.955
+  },
+  "fw:that": {
+   "mean": 6.415,
+   "sd": 3.611
+  },
+  "fw:is": {
+   "mean": 6.433,
+   "sd": 4.044
+  },
+  "fw:this": {
+   "mean": 4.732,
+   "sd": 2.867
+  },
+  "fw:at": {
+   "mean": 4.48,
+   "sd": 6.123
+  },
+  "fw:as": {
+   "mean": 4.58,
+   "sd": 2.4
+  },
+  "fw:on": {
+   "mean": 7.382,
+   "sd": 5.112
+  },
+  "fw:from": {
+   "mean": 5.42,
+   "sd": 3.323
+  },
+  "fw:or": {
+   "mean": 4.428,
+   "sd": 3.064
+  },
+  "fw:by": {
+   "mean": 5.087,
+   "sd": 1.459
+  },
+  "fw:our": {
+   "mean": 5.32,
+   "sd": 4.285
+  },
+  "fw:we": {
+   "mean": 6.157,
+   "sd": 6.644
+  },
+  "fw:an": {
+   "mean": 2.592,
+   "sd": 2.381
+  },
+  "fw:be": {
+   "mean": 2.515,
+   "sd": 1.96
+  },
+  "fw:when": {
+   "mean": 2.597,
+   "sd": 4.717
+  },
+  "fw:not": {
+   "mean": 2.25,
+   "sd": 1.681
+  },
+  "fw:no": {
+   "mean": 3.023,
+   "sd": 1.443
+  },
+  "fw:are": {
+   "mean": 3.195,
+   "sd": 1.561
+  },
+  "fw:were": {
+   "mean": 1.753,
+   "sd": 1.701
+  },
+  "fw:these": {
+   "mean": 1.78,
+   "sd": 1.98
+  },
+  "fw:has": {
+   "mean": 1.553,
+   "sd": 1.588
+  },
+  "fw:had": {
+   "mean": 1.548,
+   "sd": 1.797
+  }
+ },
+ "bands": {
+  "close_max": 1.779,
+  "drifting_max": 2.668
+ },
+ "calibration": {
+  "method": "leave-one-out deltas among the 6 corpus pieces; close_max = max LOO delta; drifting_max = 1.5x max LOO",
+  "loo_deltas": {
+   "corr_letter.txt": 0.879,
+   "donoharm_readme_prose.txt": 0.933,
+   "jas_corpus.txt": 1.644,
+   "PMC9201968.txt": 1.506,
+   "PMC8715042.txt": 0.877,
+   "donoharm_poster.txt": 1.779
+  }
+ },
+ "corpus_pieces": [
+  "corr_letter.txt",
+  "donoharm_readme_prose.txt",
+  "jas_corpus.txt",
+  "PMC9201968.txt",
+  "PMC8715042.txt",
+  "donoharm_poster.txt"
+ ]
+}

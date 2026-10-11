@@ -1,0 +1,2522 @@
+{
+ "corr_letter.txt": {
+  "words": 625,
+  "sentences": 24,
+  "sent_len_mean": 26,
+  "sent_len_median": 20.5,
+  "sent_len_stdev": 19.97,
+  "sent_pct_short_le10": 12.5,
+  "sent_pct_long_ge30": 20.8,
+  "para_len_mean": 56.7,
+  "para_len_median": 38,
+  "function_words_per1k": {
+   "the": 62.4,
+   "of": 38.4,
+   "and": 46.4,
+   "a": 6.4,
+   "an": 0.0,
+   "in": 14.4,
+   "to": 9.6,
+   "is": 3.2,
+   "are": 3.2,
+   "was": 0.0,
+   "were": 0.0,
+   "be": 3.2,
+   "been": 0.0,
+   "being": 0.0,
+   "for": 8.0,
+   "with": 16.0,
+   "as": 6.4,
+   "by": 6.4,
+   "on": 9.6,
+   "at": 0.0,
+   "from": 6.4,
+   "or": 8.0,
+   "but": 0.0,
+   "if": 0.0,
+   "then": 0.0,
+   "than": 1.6,
+   "so": 0.0,
+   "such": 0.0,
+   "into": 0.0,
+   "through": 1.6,
+   "during": 0.0,
+   "before": 0.0,
+   "after": 1.6,
+   "above": 0.0,
+   "below": 0.0,
+   "between": 0.0,
+   "under": 0.0,
+   "again": 0.0,
+   "further": 3.2,
+   "once": 0.0,
+   "here": 0.0,
+   "there": 1.6,
+   "when": 0.0,
+   "where": 0.0,
+   "why": 0.0,
+   "how": 1.6,
+   "all": 0.0,
+   "any": 1.6,
+   "both": 0.0,
+   "each": 0.0,
+   "few": 0.0,
+   "more": 0.0,
+   "most": 0.0,
+   "other": 0.0,
+   "some": 0.0,
+   "no": 1.6,
+   "nor": 0.0,
+   "not": 3.2,
+   "only": 0.0,
+   "own": 0.0,
+   "same": 1.6,
+   "too": 0.0,
+   "very": 0.0,
+   "can": 3.2,
+   "will": 3.2,
+   "just": 0.0,
+   "should": 0.0,
+   "now": 0.0,
+   "i": 3.2,
+   "we": 0.0,
+   "you": 0.0,
+   "he": 0.0,
+   "she": 0.0,
+   "it": 0.0,
+   "they": 0.0,
+   "them": 0.0,
+   "his": 0.0,
+   "her": 0.0,
+   "its": 1.6,
+   "our": 0.0,
+   "their": 1.6,
+   "this": 3.2,
+   "that": 4.8,
+   "these": 1.6,
+   "those": 0.0,
+   "am": 1.6,
+   "have": 0.0,
+   "has": 0.0,
+   "had": 0.0,
+   "having": 0.0,
+   "do": 1.6,
+   "does": 0.0,
+   "did": 0.0,
+   "doing": 1.6,
+   "would": 0.0,
+   "could": 0.0,
+   "shall": 0.0,
+   "may": 0.0,
+   "might": 1.6,
+   "must": 0.0,
+   "per": 0.0,
+   "via": 0.0,
+   "among": 0.0,
+   "within": 0.0,
+   "without": 0.0,
+   "upon": 0.0,
+   "toward": 0.0,
+   "towards": 0.0,
+   "against": 0.0,
+   "along": 0.0,
+   "across": 0.0,
+   "behind": 0.0,
+   "beyond": 0.0,
+   "plus": 0.0,
+   "except": 0.0,
+   "about": 0.0,
+   "off": 0.0,
+   "over": 0.0,
+   "out": 0.0,
+   "up": 0.0,
+   "down": 0.0
+  },
+  "punct_per1k": {
+   "em_dash": 0.0,
+   "semicolon": 0.0,
+   "colon": 6.4,
+   "comma": 56.0,
+   "paren_open": 8.0,
+   "question": 1.6,
+   "exclaim": 0.0,
+   "hyphenated_compounds": 12.8
+  },
+  "type_token_ratio": 0.565,
+  "pct_words_3plus_syll": 32.8,
+  "hedges_per1k": 1.6,
+  "assertives_per1k": 3.2,
+  "first_person_per1k": 3.2,
+  "we_per1k": 0.0,
+  "top_content_words": [
+   [
+    "neural",
+    9
+   ],
+   [
+    "networks",
+    7
+   ],
+   [
+    "alignment",
+    6
+   ],
+   [
+    "models",
+    6
+   ],
+   [
+    "learning",
+    6
+   ],
+   [
+    "use",
+    5
+   ],
+   [
+    "large",
+    4
+   ],
+   [
+    "language",
+    4
+   ],
+   [
+    "orthopaedic",
+    4
+   ],
+   [
+    "intelligence",
+    3
+   ],
+   [
+    "community",
+    3
+   ],
+   [
+    "related",
+    3
+   ],
+   [
+    "clinical",
+    3
+   ],
+   [
+    "national",
+    3
+   ],
+   [
+    "deep",
+    3
+   ],
+   [
+    "llms",
+    3
+   ],
+   [
+    "convolutional",
+    3
+   ],
+   [
+    "recurrent",
+    3
+   ],
+   [
+    "editor",
+    2
+   ],
+   [
+    "regulatory",
+    2
+   ],
+   [
+    "action",
+    2
+   ],
+   [
+    "jayakumar",
+    2
+   ],
+   [
+    "executive",
+    2
+   ],
+   [
+    "order",
+    2
+   ],
+   [
+    "development",
+    2
+   ]
+  ]
+ },
+ "donoharm_readme_prose.txt": {
+  "words": 1396,
+  "sentences": 56,
+  "sent_len_mean": 24.93,
+  "sent_len_median": 23.0,
+  "sent_len_stdev": 21.02,
+  "sent_pct_short_le10": 14.3,
+  "sent_pct_long_ge30": 19.6,
+  "para_len_mean": 34.5,
+  "para_len_median": 14.0,
+  "function_words_per1k": {
+   "the": 37.97,
+   "of": 17.19,
+   "and": 37.97,
+   "a": 20.06,
+   "an": 0.72,
+   "in": 15.04,
+   "to": 25.07,
+   "is": 7.88,
+   "are": 3.58,
+   "was": 0.0,
+   "were": 0.72,
+   "be": 2.15,
+   "been": 0.0,
+   "being": 0.72,
+   "for": 12.89,
+   "with": 10.03,
+   "as": 2.87,
+   "by": 7.16,
+   "on": 5.01,
+   "at": 1.43,
+   "from": 2.87,
+   "or": 2.15,
+   "but": 0.0,
+   "if": 0.72,
+   "then": 0.0,
+   "than": 0.72,
+   "so": 0.0,
+   "such": 0.72,
+   "into": 2.15,
+   "through": 2.15,
+   "during": 0.72,
+   "before": 0.72,
+   "after": 0.0,
+   "above": 0.0,
+   "below": 1.43,
+   "between": 0.72,
+   "under": 0.0,
+   "again": 0.0,
+   "further": 0.0,
+   "once": 0.0,
+   "here": 0.0,
+   "there": 0.0,
+   "when": 0.0,
+   "where": 2.15,
+   "why": 0.0,
+   "how": 1.43,
+   "all": 0.72,
+   "any": 0.72,
+   "both": 4.3,
+   "each": 0.0,
+   "few": 0.0,
+   "more": 0.0,
+   "most": 0.0,
+   "other": 0.72,
+   "some": 0.0,
+   "no": 2.15,
+   "nor": 0.0,
+   "not": 0.72,
+   "only": 0.0,
+   "own": 0.0,
+   "same": 0.0,
+   "too": 0.0,
+   "very": 0.0,
+   "can": 3.58,
+   "will": 0.0,
+   "just": 0.72,
+   "should": 0.0,
+   "now": 0.0,
+   "i": 2.87,
+   "we": 10.74,
+   "you": 3.58,
+   "he": 0.0,
+   "she": 0.0,
+   "it": 0.0,
+   "they": 0.0,
+   "them": 0.72,
+   "his": 0.0,
+   "her": 0.0,
+   "its": 0.0,
+   "our": 9.31,
+   "their": 0.72,
+   "this": 5.01,
+   "that": 10.74,
+   "these": 2.87,
+   "those": 0.72,
+   "am": 0.0,
+   "have": 3.58,
+   "has": 1.43,
+   "had": 0.0,
+   "having": 0.0,
+   "do": 4.3,
+   "does": 0.0,
+   "did": 0.0,
+   "doing": 0.0,
+   "would": 0.0,
+   "could": 1.43,
+   "shall": 0.0,
+   "may": 0.0,
+   "might": 0.0,
+   "must": 0.0,
+   "per": 0.0,
+   "via": 1.43,
+   "among": 0.0,
+   "within": 1.43,
+   "without": 0.72,
+   "upon": 0.0,
+   "toward": 0.0,
+   "towards": 0.72,
+   "against": 2.15,
+   "along": 0.0,
+   "across": 0.72,
+   "behind": 0.0,
+   "beyond": 0.0,
+   "plus": 0.72,
+   "except": 0.0,
+   "about": 0.0,
+   "off": 0.0,
+   "over": 0.72,
+   "out": 0.0,
+   "up": 0.0,
+   "down": 0.0
+  },
+  "punct_per1k": {
+   "em_dash": 2.15,
+   "semicolon": 0.0,
+   "colon": 12.89,
+   "comma": 60.89,
+   "paren_open": 10.74,
+   "question": 2.87,
+   "exclaim": 1.43,
+   "hyphenated_compounds": 25.07
+  },
+  "type_token_ratio": 0.45,
+  "pct_words_3plus_syll": 27.8,
+  "hedges_per1k": 1.43,
+  "assertives_per1k": 7.16,
+  "first_person_per1k": 22.92,
+  "we_per1k": 10.74,
+  "top_content_words": [
+   [
+    "secure",
+    12
+   ],
+   [
+    "cybersecurity",
+    10
+   ],
+   [
+    "cryptographic",
+    8
+   ],
+   [
+    "model",
+    8
+   ],
+   [
+    "open",
+    8
+   ],
+   [
+    "models",
+    7
+   ],
+   [
+    "security",
+    7
+   ],
+   [
+    "use",
+    7
+   ],
+   [
+    "source",
+    7
+   ],
+   [
+    "development",
+    6
+   ],
+   [
+    "while",
+    6
+   ],
+   [
+    "bias",
+    6
+   ],
+   [
+    "linux",
+    5
+   ],
+   [
+    "licensing",
+    5
+   ],
+   [
+    "critical",
+    5
+   ],
+   [
+    "quantum",
+    4
+   ],
+   [
+    "remain",
+    4
+   ],
+   [
+    "threats",
+    4
+   ],
+   [
+    "key",
+    4
+   ],
+   [
+    "driven",
+    4
+   ],
+   [
+    "deployment",
+    4
+   ],
+   [
+    "web",
+    4
+   ],
+   [
+    "apis",
+    4
+   ],
+   [
+    "tools",
+    4
+   ],
+   [
+    "accessibility",
+    4
+   ]
+  ]
+ },
+ "jas_corpus.txt": {
+  "words": 1530,
+  "sentences": 56,
+  "sent_len_mean": 27.32,
+  "sent_len_median": 19.0,
+  "sent_len_stdev": 24.8,
+  "sent_pct_short_le10": 14.3,
+  "sent_pct_long_ge30": 25.0,
+  "para_len_mean": 76.5,
+  "para_len_median": 43.5,
+  "function_words_per1k": {
+   "the": 55.56,
+   "of": 27.45,
+   "and": 34.64,
+   "a": 27.45,
+   "an": 4.58,
+   "in": 12.42,
+   "to": 23.53,
+   "is": 3.27,
+   "are": 3.27,
+   "was": 8.5,
+   "were": 2.61,
+   "be": 0.65,
+   "been": 1.31,
+   "being": 0.0,
+   "for": 13.07,
+   "with": 12.42,
+   "as": 5.88,
+   "by": 3.92,
+   "on": 3.27,
+   "at": 17.65,
+   "from": 11.76,
+   "or": 8.5,
+   "but": 0.0,
+   "if": 0.0,
+   "then": 0.0,
+   "than": 3.27,
+   "so": 0.65,
+   "such": 0.0,
+   "into": 3.27,
+   "through": 0.65,
+   "during": 0.65,
+   "before": 0.0,
+   "after": 1.31,
+   "above": 0.0,
+   "below": 0.0,
+   "between": 1.96,
+   "under": 0.65,
+   "again": 0.0,
+   "further": 0.65,
+   "once": 0.0,
+   "here": 0.0,
+   "there": 0.65,
+   "when": 13.07,
+   "where": 0.0,
+   "why": 0.0,
+   "how": 0.0,
+   "all": 3.27,
+   "any": 0.65,
+   "both": 0.0,
+   "each": 1.31,
+   "few": 0.0,
+   "more": 3.92,
+   "most": 0.0,
+   "other": 1.96,
+   "some": 0.0,
+   "no": 1.96,
+   "nor": 0.0,
+   "not": 1.96,
+   "only": 0.0,
+   "own": 0.65,
+   "same": 0.0,
+   "too": 0.0,
+   "very": 0.0,
+   "can": 0.0,
+   "will": 0.65,
+   "just": 0.0,
+   "should": 0.0,
+   "now": 0.0,
+   "i": 0.65,
+   "we": 7.84,
+   "you": 1.31,
+   "he": 0.0,
+   "she": 0.0,
+   "it": 0.65,
+   "they": 0.0,
+   "them": 0.0,
+   "his": 0.0,
+   "her": 0.0,
+   "its": 0.65,
+   "our": 6.54,
+   "their": 2.61,
+   "this": 4.58,
+   "that": 5.88,
+   "these": 0.0,
+   "those": 0.0,
+   "am": 0.0,
+   "have": 3.27,
+   "has": 1.31,
+   "had": 1.31,
+   "having": 0.0,
+   "do": 0.65,
+   "does": 1.31,
+   "did": 0.0,
+   "doing": 1.96,
+   "would": 0.65,
+   "could": 0.0,
+   "shall": 0.0,
+   "may": 0.65,
+   "might": 0.0,
+   "must": 0.0,
+   "per": 1.31,
+   "via": 0.0,
+   "among": 0.0,
+   "within": 0.65,
+   "without": 0.0,
+   "upon": 0.0,
+   "toward": 0.0,
+   "towards": 0.0,
+   "against": 0.0,
+   "along": 0.65,
+   "across": 0.0,
+   "behind": 0.0,
+   "beyond": 0.0,
+   "plus": 0.0,
+   "except": 0.0,
+   "about": 1.96,
+   "off": 0.0,
+   "over": 1.31,
+   "out": 0.65,
+   "up": 2.61,
+   "down": 0.0
+  },
+  "punct_per1k": {
+   "em_dash": 0.0,
+   "semicolon": 4.58,
+   "colon": 2.61,
+   "comma": 66.67,
+   "paren_open": 21.57,
+   "question": 11.76,
+   "exclaim": 0.0,
+   "hyphenated_compounds": 6.54
+  },
+  "type_token_ratio": 0.332,
+  "pct_words_3plus_syll": 23.6,
+  "hedges_per1k": 3.27,
+  "assertives_per1k": 1.31,
+  "first_person_per1k": 15.03,
+  "we_per1k": 7.84,
+  "top_content_words": [
+   [
+    "fjs",
+    37
+   ],
+   [
+    "joint",
+    29
+   ],
+   [
+    "score",
+    24
+   ],
+   [
+    "jas",
+    22
+   ],
+   [
+    "months",
+    19
+   ],
+   [
+    "tka",
+    11
+   ],
+   [
+    "patient",
+    11
+   ],
+   [
+    "never",
+    11
+   ],
+   [
+    "awareness",
+    11
+   ],
+   [
+    "effect",
+    10
+   ],
+   [
+    "forgotten",
+    10
+   ],
+   [
+    "ceiling",
+    9
+   ],
+   [
+    "responses",
+    8
+   ],
+   [
+    "comparison",
+    8
+   ],
+   [
+    "knee",
+    7
+   ],
+   [
+    "arthroplasty",
+    7
+   ],
+   [
+    "scores",
+    7
+   ],
+   [
+    "patients",
+    7
+   ],
+   [
+    "questions",
+    7
+   ],
+   [
+    "answer",
+    6
+   ],
+   [
+    "floor",
+    6
+   ],
+   [
+    "years",
+    6
+   ],
+   [
+    "range",
+    6
+   ],
+   [
+    "table",
+    6
+   ],
+   [
+    "age",
+    6
+   ]
+  ]
+ },
+ "PMC9201968.txt": {
+  "words": 2320,
+  "sentences": 97,
+  "sent_len_mean": 23.92,
+  "sent_len_median": 22,
+  "sent_len_stdev": 11.16,
+  "sent_pct_short_le10": 9.3,
+  "sent_pct_long_ge30": 25.8,
+  "para_len_mean": 110.4,
+  "para_len_median": 122,
+  "function_words_per1k": {
+   "the": 60.34,
+   "of": 36.21,
+   "and": 30.17,
+   "a": 28.45,
+   "an": 4.74,
+   "in": 25.43,
+   "to": 17.24,
+   "is": 14.66,
+   "are": 2.59,
+   "was": 18.53,
+   "were": 4.74,
+   "be": 6.03,
+   "been": 1.72,
+   "being": 0.43,
+   "for": 7.33,
+   "with": 18.1,
+   "as": 5.6,
+   "by": 3.45,
+   "on": 5.6,
+   "at": 4.74,
+   "from": 1.29,
+   "or": 3.02,
+   "but": 3.02,
+   "if": 0.0,
+   "then": 0.43,
+   "than": 0.43,
+   "so": 0.0,
+   "such": 0.43,
+   "into": 0.0,
+   "through": 0.43,
+   "during": 0.0,
+   "before": 1.29,
+   "after": 0.86,
+   "above": 0.0,
+   "below": 0.43,
+   "between": 3.02,
+   "under": 0.43,
+   "again": 0.43,
+   "further": 0.0,
+   "once": 0.43,
+   "here": 0.0,
+   "there": 3.88,
+   "when": 1.29,
+   "where": 0.0,
+   "why": 0.0,
+   "how": 0.0,
+   "all": 0.43,
+   "any": 0.43,
+   "both": 1.29,
+   "each": 0.0,
+   "few": 0.0,
+   "more": 0.86,
+   "most": 0.0,
+   "other": 0.43,
+   "some": 0.43,
+   "no": 3.45,
+   "nor": 0.0,
+   "not": 5.17,
+   "only": 0.0,
+   "own": 0.0,
+   "same": 0.86,
+   "too": 0.0,
+   "very": 0.0,
+   "can": 0.43,
+   "will": 0.43,
+   "just": 0.0,
+   "should": 0.86,
+   "now": 0.43,
+   "i": 0.0,
+   "we": 0.0,
+   "you": 0.0,
+   "he": 2.59,
+   "she": 0.0,
+   "it": 4.74,
+   "they": 1.29,
+   "them": 0.0,
+   "his": 4.74,
+   "her": 0.0,
+   "its": 1.72,
+   "our": 3.02,
+   "their": 0.0,
+   "this": 9.48,
+   "that": 10.34,
+   "these": 5.6,
+   "those": 0.86,
+   "am": 0.0,
+   "have": 2.16,
+   "has": 4.74,
+   "had": 4.31,
+   "having": 0.0,
+   "do": 0.86,
+   "does": 1.29,
+   "did": 0.43,
+   "doing": 0.0,
+   "would": 0.86,
+   "could": 1.29,
+   "shall": 0.0,
+   "may": 2.16,
+   "might": 0.0,
+   "must": 0.0,
+   "per": 0.0,
+   "via": 0.0,
+   "among": 0.0,
+   "within": 0.0,
+   "without": 2.59,
+   "upon": 0.86,
+   "toward": 0.0,
+   "towards": 0.0,
+   "against": 0.0,
+   "along": 0.0,
+   "across": 0.43,
+   "behind": 0.0,
+   "beyond": 0.43,
+   "plus": 0.0,
+   "except": 0.0,
+   "about": 0.0,
+   "off": 0.0,
+   "over": 0.86,
+   "out": 0.86,
+   "up": 0.86,
+   "down": 0.0
+  },
+  "punct_per1k": {
+   "em_dash": 0.0,
+   "semicolon": 1.29,
+   "colon": 0.0,
+   "comma": 50.86,
+   "paren_open": 18.53,
+   "question": 0.0,
+   "exclaim": 0.0,
+   "hyphenated_compounds": 14.22
+  },
+  "type_token_ratio": 0.328,
+  "pct_words_3plus_syll": 24.7,
+  "hedges_per1k": 6.9,
+  "assertives_per1k": 2.59,
+  "first_person_per1k": 3.02,
+  "we_per1k": 0.0,
+  "top_content_words": [
+   [
+    "stem",
+    38
+   ],
+   [
+    "proximal",
+    23
+   ],
+   [
+    "distal",
+    15
+   ],
+   [
+    "corail",
+    14
+   ],
+   [
+    "hip",
+    14
+   ],
+   [
+    "stems",
+    14
+   ],
+   [
+    "revision",
+    14
+   ],
+   [
+    "femoral",
+    13
+   ],
+   [
+    "fixation",
+    13
+   ],
+   [
+    "right",
+    12
+   ],
+   [
+    "patient",
+    12
+   ],
+   [
+    "loosening",
+    10
+   ],
+   [
+    "left",
+    9
+   ],
+   [
+    "which",
+    8
+   ],
+   [
+    "coated",
+    8
+   ],
+   [
+    "metal",
+    8
+   ],
+   [
+    "mom",
+    8
+   ],
+   [
+    "pain",
+    8
+   ],
+   [
+    "bone",
+    8
+   ],
+   [
+    "well",
+    8
+   ],
+   [
+    "findings",
+    8
+   ],
+   [
+    "coating",
+    8
+   ],
+   [
+    "case",
+    7
+   ],
+   [
+    "dorr",
+    7
+   ],
+   [
+    "surgery",
+    7
+   ]
+  ]
+ },
+ "PMC8715042.txt": {
+  "words": 1634,
+  "sentences": 70,
+  "sent_len_mean": 23.23,
+  "sent_len_median": 22.0,
+  "sent_len_stdev": 12.56,
+  "sent_pct_short_le10": 18.6,
+  "sent_pct_long_ge30": 27.1,
+  "para_len_mean": 74.1,
+  "para_len_median": 16.5,
+  "function_words_per1k": {
+   "the": 56.92,
+   "of": 42.84,
+   "and": 37.94,
+   "a": 22.03,
+   "an": 5.51,
+   "in": 19.58,
+   "to": 10.4,
+   "is": 3.67,
+   "are": 0.61,
+   "was": 10.4,
+   "were": 2.45,
+   "be": 3.06,
+   "been": 1.22,
+   "being": 0.0,
+   "for": 17.14,
+   "with": 22.64,
+   "as": 6.73,
+   "by": 3.67,
+   "on": 3.06,
+   "at": 3.06,
+   "from": 4.28,
+   "or": 4.9,
+   "but": 0.61,
+   "if": 0.0,
+   "then": 0.61,
+   "than": 0.0,
+   "so": 0.0,
+   "such": 2.45,
+   "into": 3.06,
+   "through": 1.22,
+   "during": 0.61,
+   "before": 0.0,
+   "after": 0.0,
+   "above": 0.0,
+   "below": 0.0,
+   "between": 0.61,
+   "under": 1.84,
+   "again": 0.0,
+   "further": 0.61,
+   "once": 0.0,
+   "here": 0.0,
+   "there": 2.45,
+   "when": 1.22,
+   "where": 0.0,
+   "why": 0.0,
+   "how": 0.0,
+   "all": 0.61,
+   "any": 0.0,
+   "both": 1.22,
+   "each": 0.61,
+   "few": 0.0,
+   "more": 1.22,
+   "most": 0.61,
+   "other": 0.61,
+   "some": 1.84,
+   "no": 3.06,
+   "nor": 0.0,
+   "not": 2.45,
+   "only": 0.61,
+   "own": 0.0,
+   "same": 0.0,
+   "too": 0.0,
+   "very": 0.61,
+   "can": 1.22,
+   "will": 0.61,
+   "just": 0.0,
+   "should": 0.0,
+   "now": 0.0,
+   "i": 0.61,
+   "we": 0.61,
+   "you": 0.0,
+   "he": 0.0,
+   "she": 2.45,
+   "it": 0.0,
+   "they": 0.0,
+   "them": 0.0,
+   "his": 0.0,
+   "her": 6.12,
+   "its": 0.61,
+   "our": 1.22,
+   "their": 0.61,
+   "this": 6.12,
+   "that": 6.73,
+   "these": 0.61,
+   "those": 0.61,
+   "am": 0.0,
+   "have": 0.61,
+   "has": 1.84,
+   "had": 3.67,
+   "having": 0.0,
+   "do": 0.0,
+   "does": 0.0,
+   "did": 0.0,
+   "doing": 0.0,
+   "would": 0.61,
+   "could": 0.61,
+   "shall": 0.0,
+   "may": 1.22,
+   "might": 0.0,
+   "must": 0.61,
+   "per": 1.22,
+   "via": 0.61,
+   "among": 0.0,
+   "within": 1.22,
+   "without": 1.22,
+   "upon": 1.22,
+   "toward": 0.0,
+   "towards": 0.0,
+   "against": 0.0,
+   "along": 0.61,
+   "across": 0.0,
+   "behind": 0.0,
+   "beyond": 0.0,
+   "plus": 0.0,
+   "except": 0.0,
+   "about": 1.22,
+   "off": 0.61,
+   "over": 1.84,
+   "out": 1.84,
+   "up": 0.0,
+   "down": 0.0
+  },
+  "punct_per1k": {
+   "em_dash": 0.0,
+   "semicolon": 0.61,
+   "colon": 2.45,
+   "comma": 55.69,
+   "paren_open": 6.73,
+   "question": 0.0,
+   "exclaim": 0.0,
+   "hyphenated_compounds": 15.91
+  },
+  "type_token_ratio": 0.373,
+  "pct_words_3plus_syll": 30.7,
+  "hedges_per1k": 2.45,
+  "assertives_per1k": 1.22,
+  "first_person_per1k": 3.06,
+  "we_per1k": 0.61,
+  "top_content_words": [
+   [
+    "posterior",
+    23
+   ],
+   [
+    "anterior",
+    22
+   ],
+   [
+    "patient",
+    19
+   ],
+   [
+    "cervical",
+    16
+   ],
+   [
+    "approach",
+    16
+   ],
+   [
+    "fusion",
+    13
+   ],
+   [
+    "kyphosis",
+    10
+   ],
+   [
+    "screws",
+    9
+   ],
+   [
+    "while",
+    8
+   ],
+   [
+    "osteoporosis",
+    8
+   ],
+   [
+    "lateral",
+    8
+   ],
+   [
+    "surgery",
+    8
+   ],
+   [
+    "spinal",
+    7
+   ],
+   [
+    "approaches",
+    7
+   ],
+   [
+    "neck",
+    7
+   ],
+   [
+    "complications",
+    7
+   ],
+   [
+    "current",
+    6
+   ],
+   [
+    "screw",
+    6
+   ],
+   [
+    "fig",
+    6
+   ],
+   [
+    "capdf",
+    6
+   ],
+   [
+    "acdf",
+    5
+   ],
+   [
+    "procedure",
+    5
+   ],
+   [
+    "surgical",
+    5
+   ],
+   [
+    "csm",
+    5
+   ],
+   [
+    "pain",
+    5
+   ]
+  ]
+ },
+ "donoharm_poster.txt": {
+  "words": 169,
+  "sentences": 7,
+  "sent_len_mean": 24.14,
+  "sent_len_median": 20,
+  "sent_len_stdev": 11.2,
+  "sent_pct_short_le10": 14.3,
+  "sent_pct_long_ge30": 28.6,
+  "para_len_mean": 56.3,
+  "para_len_median": 39,
+  "function_words_per1k": {
+   "the": 0.0,
+   "of": 17.75,
+   "and": 47.34,
+   "a": 17.75,
+   "an": 0.0,
+   "in": 5.92,
+   "to": 29.59,
+   "is": 5.92,
+   "are": 5.92,
+   "was": 0.0,
+   "were": 0.0,
+   "be": 0.0,
+   "been": 0.0,
+   "being": 0.0,
+   "for": 5.92,
+   "with": 17.75,
+   "as": 0.0,
+   "by": 5.92,
+   "on": 17.75,
+   "at": 0.0,
+   "from": 5.92,
+   "or": 0.0,
+   "but": 0.0,
+   "if": 0.0,
+   "then": 0.0,
+   "than": 0.0,
+   "so": 0.0,
+   "such": 0.0,
+   "into": 0.0,
+   "through": 0.0,
+   "during": 0.0,
+   "before": 0.0,
+   "after": 0.0,
+   "above": 0.0,
+   "below": 0.0,
+   "between": 0.0,
+   "under": 5.92,
+   "again": 0.0,
+   "further": 0.0,
+   "once": 0.0,
+   "here": 0.0,
+   "there": 0.0,
+   "when": 0.0,
+   "where": 0.0,
+   "why": 0.0,
+   "how": 5.92,
+   "all": 5.92,
+   "any": 0.0,
+   "both": 0.0,
+   "each": 0.0,
+   "few": 0.0,
+   "more": 0.0,
+   "most": 0.0,
+   "other": 0.0,
+   "some": 0.0,
+   "no": 5.92,
+   "nor": 0.0,
+   "not": 0.0,
+   "only": 0.0,
+   "own": 0.0,
+   "same": 0.0,
+   "too": 0.0,
+   "very": 0.0,
+   "can": 5.92,
+   "will": 0.0,
+   "just": 0.0,
+   "should": 0.0,
+   "now": 5.92,
+   "i": 0.0,
+   "we": 17.75,
+   "you": 0.0,
+   "he": 0.0,
+   "she": 0.0,
+   "it": 0.0,
+   "they": 0.0,
+   "them": 0.0,
+   "his": 0.0,
+   "her": 0.0,
+   "its": 0.0,
+   "our": 11.83,
+   "their": 0.0,
+   "this": 0.0,
+   "that": 0.0,
+   "these": 0.0,
+   "those": 0.0,
+   "am": 0.0,
+   "have": 0.0,
+   "has": 0.0,
+   "had": 0.0,
+   "having": 0.0,
+   "do": 5.92,
+   "does": 0.0,
+   "did": 0.0,
+   "doing": 0.0,
+   "would": 0.0,
+   "could": 0.0,
+   "shall": 0.0,
+   "may": 0.0,
+   "might": 0.0,
+   "must": 0.0,
+   "per": 0.0,
+   "via": 5.92,
+   "among": 0.0,
+   "within": 0.0,
+   "without": 0.0,
+   "upon": 0.0,
+   "toward": 0.0,
+   "towards": 0.0,
+   "against": 0.0,
+   "along": 0.0,
+   "across": 0.0,
+   "behind": 0.0,
+   "beyond": 0.0,
+   "plus": 0.0,
+   "except": 0.0,
+   "about": 0.0,
+   "off": 0.0,
+   "over": 0.0,
+   "out": 0.0,
+   "up": 0.0,
+   "down": 0.0
+  },
+  "punct_per1k": {
+   "em_dash": 0.0,
+   "semicolon": 0.0,
+   "colon": 11.83,
+   "comma": 106.51,
+   "paren_open": 5.92,
+   "question": 5.92,
+   "exclaim": 0.0,
+   "hyphenated_compounds": 35.5
+  },
+  "type_token_ratio": 0.769,
+  "pct_words_3plus_syll": 24.3,
+  "hedges_per1k": 0.0,
+  "assertives_per1k": 0.0,
+  "first_person_per1k": 29.59,
+  "we_per1k": 17.75,
+  "top_content_words": [
+   [
+    "code",
+    3
+   ],
+   [
+    "public",
+    3
+   ],
+   [
+    "spokane",
+    2
+   ],
+   [
+    "medicine",
+    2
+   ],
+   [
+    "models",
+    2
+   ],
+   [
+    "post",
+    2
+   ],
+   [
+    "quantum",
+    2
+   ],
+   [
+    "cryptography",
+    2
+   ],
+   [
+    "first",
+    1
+   ],
+   [
+    "harm",
+    1
+   ],
+   [
+    "making",
+    1
+   ],
+   [
+    "safe",
+    1
+   ],
+   [
+    "secure",
+    1
+   ],
+   [
+    "trustworthy",
+    1
+   ],
+   [
+    "matt",
+    1
+   ],
+   [
+    "porter",
+    1
+   ],
+   [
+    "henry",
+    1
+   ],
+   [
+    "mroch",
+    1
+   ],
+   [
+    "qompass",
+    1
+   ],
+   [
+    "department",
+    1
+   ],
+   [
+    "nephrology",
+    1
+   ],
+   [
+    "washington",
+    1
+   ],
+   [
+    "state",
+    1
+   ],
+   [
+    "university",
+    1
+   ],
+   [
+    "elson",
+    1
+   ]
+  ]
+ },
+ "pooled": {
+  "words": 7674,
+  "sentences": 307,
+  "sent_len_mean": 24.97,
+  "sent_len_median": 22,
+  "sent_len_stdev": 17.49,
+  "sent_pct_short_le10": 13.4,
+  "sent_pct_long_ge30": 25.4,
+  "para_len_mean": 68.3,
+  "para_len_median": 39.0,
+  "function_words_per1k": {
+   "the": 53.43,
+   "of": 32.19,
+   "and": 35.84,
+   "a": 23.33,
+   "an": 3.65,
+   "in": 18.37,
+   "to": 18.11,
+   "is": 7.69,
+   "are": 2.61,
+   "was": 9.51,
+   "were": 2.61,
+   "be": 3.26,
+   "been": 1.04,
+   "being": 0.26,
+   "for": 11.6,
+   "with": 16.29,
+   "as": 5.34,
+   "by": 4.56,
+   "on": 5.08,
+   "at": 5.86,
+   "from": 4.82,
+   "or": 4.69,
+   "but": 1.04,
+   "if": 0.13,
+   "then": 0.26,
+   "than": 1.04,
+   "so": 0.13,
+   "such": 0.78,
+   "into": 1.69,
+   "through": 1.04,
+   "during": 0.39,
+   "before": 0.52,
+   "after": 0.65,
+   "above": 0.0,
+   "below": 0.39,
+   "between": 1.56,
+   "under": 0.78,
+   "again": 0.13,
+   "further": 0.52,
+   "once": 0.13,
+   "here": 0.0,
+   "there": 1.95,
+   "when": 3.26,
+   "where": 0.39,
+   "why": 0.0,
+   "how": 0.52,
+   "all": 1.17,
+   "any": 0.52,
+   "both": 1.43,
+   "each": 0.39,
+   "few": 0.0,
+   "more": 1.3,
+   "most": 0.13,
+   "other": 0.78,
+   "some": 0.52,
+   "no": 2.74,
+   "nor": 0.0,
+   "not": 2.87,
+   "only": 0.13,
+   "own": 0.13,
+   "same": 0.39,
+   "too": 0.0,
+   "very": 0.13,
+   "can": 1.43,
+   "will": 0.65,
+   "just": 0.13,
+   "should": 0.26,
+   "now": 0.26,
+   "i": 1.04,
+   "we": 4.04,
+   "you": 0.91,
+   "he": 0.78,
+   "she": 0.52,
+   "it": 1.56,
+   "they": 0.39,
+   "them": 0.13,
+   "his": 1.43,
+   "her": 1.3,
+   "its": 0.91,
+   "our": 4.43,
+   "their": 0.91,
+   "this": 6.25,
+   "that": 8.08,
+   "these": 2.48,
+   "those": 0.52,
+   "am": 0.13,
+   "have": 2.08,
+   "has": 2.35,
+   "had": 2.35,
+   "having": 0.0,
+   "do": 1.43,
+   "does": 0.65,
+   "did": 0.13,
+   "doing": 0.52,
+   "would": 0.52,
+   "could": 0.78,
+   "shall": 0.0,
+   "may": 1.04,
+   "might": 0.13,
+   "must": 0.13,
+   "per": 0.52,
+   "via": 0.52,
+   "among": 0.0,
+   "within": 0.65,
+   "without": 1.17,
+   "upon": 0.52,
+   "toward": 0.0,
+   "towards": 0.13,
+   "against": 0.39,
+   "along": 0.26,
+   "across": 0.26,
+   "behind": 0.0,
+   "beyond": 0.13,
+   "plus": 0.13,
+   "except": 0.0,
+   "about": 0.65,
+   "off": 0.13,
+   "over": 1.04,
+   "out": 0.78,
+   "up": 0.78,
+   "down": 0.0
+  },
+  "punct_per1k": {
+   "em_dash": 0.39,
+   "semicolon": 1.43,
+   "colon": 4.17,
+   "comma": 58.51,
+   "paren_open": 14.07,
+   "question": 3.13,
+   "exclaim": 0.26,
+   "hyphenated_compounds": 15.38
+  },
+  "type_token_ratio": 0.276,
+  "pct_words_3plus_syll": 27.0,
+  "hedges_per1k": 3.65,
+  "assertives_per1k": 2.87,
+  "first_person_per1k": 9.64,
+  "we_per1k": 4.04,
+  "top_content_words": [
+   [
+    "patient",
+    45
+   ],
+   [
+    "stem",
+    38
+   ],
+   [
+    "fjs",
+    37
+   ],
+   [
+    "joint",
+    32
+   ],
+   [
+    "score",
+    26
+   ],
+   [
+    "anterior",
+    24
+   ],
+   [
+    "proximal",
+    23
+   ],
+   [
+    "posterior",
+    23
+   ],
+   [
+    "use",
+    22
+   ],
+   [
+    "approach",
+    22
+   ],
+   [
+    "jas",
+    22
+   ],
+   [
+    "months",
+    22
+   ],
+   [
+    "right",
+    19
+   ],
+   [
+    "revision",
+    18
+   ],
+   [
+    "surgery",
+    17
+   ],
+   [
+    "while",
+    17
+   ],
+   [
+    "fixation",
+    17
+   ],
+   [
+    "cervical",
+    16
+   ],
+   [
+    "models",
+    15
+   ],
+   [
+    "left",
+    15
+   ],
+   [
+    "which",
+    15
+   ],
+   [
+    "awareness",
+    15
+   ],
+   [
+    "hip",
+    15
+   ],
+   [
+    "distal",
+    15
+   ],
+   [
+    "secure",
+    14
+   ]
+  ]
+ },
+ "jas_holdout.txt": {
+  "words": 1311,
+  "sentences": 48,
+  "sent_len_mean": 27.31,
+  "sent_len_median": 26.5,
+  "sent_len_stdev": 11.72,
+  "sent_pct_short_le10": 8.3,
+  "sent_pct_long_ge30": 43.8,
+  "para_len_mean": 93.6,
+  "para_len_median": 61.5,
+  "function_words_per1k": {
+   "the": 69.41,
+   "of": 34.32,
+   "and": 30.51,
+   "a": 25.93,
+   "an": 3.81,
+   "in": 16.02,
+   "to": 25.17,
+   "is": 12.2,
+   "are": 3.05,
+   "was": 2.29,
+   "were": 3.05,
+   "be": 6.86,
+   "been": 1.53,
+   "being": 0.76,
+   "for": 15.26,
+   "with": 12.97,
+   "as": 6.86,
+   "by": 3.05,
+   "on": 6.86,
+   "at": 9.92,
+   "from": 5.34,
+   "or": 2.29,
+   "but": 2.29,
+   "if": 0.76,
+   "then": 0.76,
+   "than": 2.29,
+   "so": 0.76,
+   "such": 3.05,
+   "into": 0.76,
+   "through": 0.76,
+   "during": 1.53,
+   "before": 0.76,
+   "after": 0.76,
+   "above": 0.0,
+   "below": 0.0,
+   "between": 3.81,
+   "under": 0.0,
+   "again": 0.0,
+   "further": 0.76,
+   "once": 0.0,
+   "here": 0.0,
+   "there": 2.29,
+   "when": 0.76,
+   "where": 0.0,
+   "why": 0.0,
+   "how": 0.0,
+   "all": 0.76,
+   "any": 0.76,
+   "both": 0.76,
+   "each": 1.53,
+   "few": 0.0,
+   "more": 5.34,
+   "most": 0.76,
+   "other": 3.81,
+   "some": 0.0,
+   "no": 1.53,
+   "nor": 0.0,
+   "not": 9.15,
+   "only": 0.0,
+   "own": 0.0,
+   "same": 0.76,
+   "too": 0.0,
+   "very": 0.0,
+   "can": 0.76,
+   "will": 1.53,
+   "just": 0.0,
+   "should": 0.0,
+   "now": 0.0,
+   "i": 0.0,
+   "we": 5.34,
+   "you": 0.0,
+   "he": 0.0,
+   "she": 0.0,
+   "it": 3.81,
+   "they": 1.53,
+   "them": 0.0,
+   "his": 0.0,
+   "her": 0.0,
+   "its": 0.0,
+   "our": 6.1,
+   "their": 4.58,
+   "this": 6.86,
+   "that": 16.02,
+   "these": 3.05,
+   "those": 0.0,
+   "am": 0.0,
+   "have": 1.53,
+   "has": 3.81,
+   "had": 0.0,
+   "having": 0.76,
+   "do": 0.76,
+   "does": 0.0,
+   "did": 1.53,
+   "doing": 0.0,
+   "would": 0.76,
+   "could": 3.81,
+   "shall": 0.0,
+   "may": 4.58,
+   "might": 0.0,
+   "must": 0.76,
+   "per": 0.0,
+   "via": 0.0,
+   "among": 0.0,
+   "within": 0.0,
+   "without": 0.76,
+   "upon": 0.0,
+   "toward": 0.76,
+   "towards": 0.0,
+   "against": 0.76,
+   "along": 0.0,
+   "across": 0.0,
+   "behind": 0.76,
+   "beyond": 0.76,
+   "plus": 0.0,
+   "except": 0.0,
+   "about": 2.29,
+   "off": 0.0,
+   "over": 0.76,
+   "out": 2.29,
+   "up": 2.29,
+   "down": 0.0
+  },
+  "punct_per1k": {
+   "em_dash": 0.0,
+   "semicolon": 2.29,
+   "colon": 1.53,
+   "comma": 68.65,
+   "paren_open": 4.58,
+   "question": 0.76,
+   "exclaim": 0.0,
+   "hyphenated_compounds": 6.1
+  },
+  "type_token_ratio": 0.39,
+  "pct_words_3plus_syll": 24.0,
+  "hedges_per1k": 15.26,
+  "assertives_per1k": 6.1,
+  "first_person_per1k": 11.44,
+  "we_per1k": 5.34,
+  "top_content_words": [
+   [
+    "fjs",
+    16
+   ],
+   [
+    "jas",
+    14
+   ],
+   [
+    "joint",
+    12
+   ],
+   [
+    "patient",
+    12
+   ],
+   [
+    "score",
+    11
+   ],
+   [
+    "patients",
+    10
+   ],
+   [
+    "missing",
+    9
+   ],
+   [
+    "knee",
+    8
+   ],
+   [
+    "data",
+    8
+   ],
+   [
+    "awareness",
+    6
+   ],
+   [
+    "activity",
+    6
+   ],
+   [
+    "tka",
+    6
+   ],
+   [
+    "functional",
+    6
+   ],
+   [
+    "higher",
+    6
+   ],
+   [
+    "prom",
+    6
+   ],
+   [
+    "questions",
+    6
+   ],
+   [
+    "additionally",
+    6
+   ],
+   [
+    "high",
+    5
+   ],
+   [
+    "arthroplasty",
+    5
+   ],
+   [
+    "younger",
+    5
+   ],
+   [
+    "while",
+    5
+   ],
+   [
+    "question",
+    5
+   ],
+   [
+    "random",
+    5
+   ],
+   [
+    "comparison",
+    4
+   ],
+   [
+    "months",
+    4
+   ]
+  ]
+ },
+ "cureus_holdout.txt": {
+  "words": 1553,
+  "sentences": 70,
+  "sent_len_mean": 22.19,
+  "sent_len_median": 21.0,
+  "sent_len_stdev": 9.52,
+  "sent_pct_short_le10": 5.7,
+  "sent_pct_long_ge30": 18.6,
+  "para_len_mean": 96.9,
+  "para_len_median": 83.0,
+  "function_words_per1k": {
+   "the": 90.79,
+   "of": 43.14,
+   "and": 27.04,
+   "a": 21.25,
+   "an": 5.8,
+   "in": 10.3,
+   "to": 30.26,
+   "is": 5.15,
+   "are": 1.93,
+   "was": 19.96,
+   "were": 9.66,
+   "be": 3.22,
+   "been": 1.93,
+   "being": 0.64,
+   "for": 6.44,
+   "with": 21.89,
+   "as": 16.74,
+   "by": 0.64,
+   "on": 4.51,
+   "at": 4.51,
+   "from": 7.73,
+   "or": 2.58,
+   "but": 2.58,
+   "if": 0.64,
+   "then": 0.0,
+   "than": 0.0,
+   "so": 0.0,
+   "such": 0.64,
+   "into": 1.93,
+   "through": 1.93,
+   "during": 1.93,
+   "before": 0.0,
+   "after": 5.15,
+   "above": 0.0,
+   "below": 0.0,
+   "between": 1.29,
+   "under": 0.0,
+   "again": 0.0,
+   "further": 0.64,
+   "once": 0.0,
+   "here": 0.0,
+   "there": 3.22,
+   "when": 0.0,
+   "where": 1.29,
+   "why": 0.0,
+   "how": 0.64,
+   "all": 0.64,
+   "any": 1.29,
+   "both": 0.0,
+   "each": 0.0,
+   "few": 0.0,
+   "more": 0.64,
+   "most": 2.58,
+   "other": 0.0,
+   "some": 0.0,
+   "no": 1.29,
+   "nor": 0.0,
+   "not": 2.58,
+   "only": 0.0,
+   "own": 0.0,
+   "same": 0.0,
+   "too": 0.0,
+   "very": 0.64,
+   "can": 1.29,
+   "will": 0.0,
+   "just": 0.0,
+   "should": 0.64,
+   "now": 0.0,
+   "i": 0.0,
+   "we": 0.64,
+   "you": 0.0,
+   "he": 3.22,
+   "she": 0.0,
+   "it": 3.86,
+   "they": 0.64,
+   "them": 0.0,
+   "his": 3.86,
+   "her": 0.0,
+   "its": 1.29,
+   "our": 1.93,
+   "their": 0.64,
+   "this": 4.51,
+   "that": 7.73,
+   "these": 0.0,
+   "those": 0.64,
+   "am": 0.0,
+   "have": 2.58,
+   "has": 1.93,
+   "had": 1.93,
+   "having": 0.64,
+   "do": 0.0,
+   "does": 0.0,
+   "did": 0.64,
+   "doing": 0.0,
+   "would": 3.22,
+   "could": 0.0,
+   "shall": 0.0,
+   "may": 0.64,
+   "might": 0.0,
+   "must": 1.29,
+   "per": 0.64,
+   "via": 0.0,
+   "among": 0.0,
+   "within": 0.0,
+   "without": 0.64,
+   "upon": 0.64,
+   "toward": 0.0,
+   "towards": 0.0,
+   "against": 0.0,
+   "along": 1.29,
+   "across": 0.0,
+   "behind": 0.0,
+   "beyond": 0.0,
+   "plus": 0.0,
+   "except": 0.0,
+   "about": 0.64,
+   "off": 0.64,
+   "over": 0.0,
+   "out": 1.93,
+   "up": 1.29,
+   "down": 0.0
+  },
+  "punct_per1k": {
+   "em_dash": 0.0,
+   "semicolon": 0.0,
+   "colon": 1.29,
+   "comma": 59.24,
+   "paren_open": 7.08,
+   "question": 0.0,
+   "exclaim": 0.0,
+   "hyphenated_compounds": 10.95
+  },
+  "type_token_ratio": 0.363,
+  "pct_words_3plus_syll": 24.7,
+  "hedges_per1k": 5.15,
+  "assertives_per1k": 3.22,
+  "first_person_per1k": 2.58,
+  "we_per1k": 0.64,
+  "top_content_words": [
+   [
+    "fracture",
+    17
+   ],
+   [
+    "cervical",
+    17
+   ],
+   [
+    "spinal",
+    16
+   ],
+   [
+    "spine",
+    14
+   ],
+   [
+    "patient",
+    13
+   ],
+   [
+    "cord",
+    11
+   ],
+   [
+    "fusion",
+    11
+   ],
+   [
+    "occiput",
+    10
+   ],
+   [
+    "placed",
+    9
+   ],
+   [
+    "associated",
+    7
+   ],
+   [
+    "fractures",
+    7
+   ],
+   [
+    "posterior",
+    7
+   ],
+   [
+    "bone",
+    7
+   ],
+   [
+    "neurological",
+    6
+   ],
+   [
+    "position",
+    6
+   ],
+   [
+    "screws",
+    6
+   ],
+   [
+    "joints",
+    5
+   ],
+   [
+    "synostosis",
+    5
+   ],
+   [
+    "risk",
+    5
+   ],
+   [
+    "surgical",
+    5
+   ],
+   [
+    "pain",
+    5
+   ],
+   [
+    "right",
+    5
+   ],
+   [
+    "torticollis",
+    5
+   ],
+   [
+    "patient's",
+    5
+   ],
+   [
+    "often",
+    4
+   ]
+  ]
+ },
+ "synthetic_sample.txt": {
+  "words": 401,
+  "sentences": 16,
+  "sent_len_mean": 25.06,
+  "sent_len_median": 26.0,
+  "sent_len_stdev": 7.16,
+  "sent_pct_short_le10": 0.0,
+  "sent_pct_long_ge30": 18.8,
+  "para_len_mean": 66.8,
+  "para_len_median": 67.0,
+  "function_words_per1k": {
+   "the": 52.37,
+   "of": 44.89,
+   "and": 27.43,
+   "a": 22.44,
+   "an": 2.49,
+   "in": 22.44,
+   "to": 22.44,
+   "is": 9.98,
+   "are": 2.49,
+   "was": 0.0,
+   "were": 0.0,
+   "be": 0.0,
+   "been": 0.0,
+   "being": 0.0,
+   "for": 14.96,
+   "with": 0.0,
+   "as": 7.48,
+   "by": 7.48,
+   "on": 4.99,
+   "at": 0.0,
+   "from": 0.0,
+   "or": 0.0,
+   "but": 0.0,
+   "if": 0.0,
+   "then": 0.0,
+   "than": 0.0,
+   "so": 0.0,
+   "such": 0.0,
+   "into": 7.48,
+   "through": 0.0,
+   "during": 4.99,
+   "before": 0.0,
+   "after": 0.0,
+   "above": 0.0,
+   "below": 0.0,
+   "between": 0.0,
+   "under": 0.0,
+   "again": 0.0,
+   "further": 2.49,
+   "once": 0.0,
+   "here": 0.0,
+   "there": 0.0,
+   "when": 0.0,
+   "where": 0.0,
+   "why": 0.0,
+   "how": 0.0,
+   "all": 0.0,
+   "any": 0.0,
+   "both": 0.0,
+   "each": 2.49,
+   "few": 0.0,
+   "more": 4.99,
+   "most": 0.0,
+   "other": 0.0,
+   "some": 0.0,
+   "no": 0.0,
+   "nor": 0.0,
+   "not": 2.49,
+   "only": 0.0,
+   "own": 0.0,
+   "same": 0.0,
+   "too": 0.0,
+   "very": 0.0,
+   "can": 12.47,
+   "will": 2.49,
+   "just": 0.0,
+   "should": 0.0,
+   "now": 0.0,
+   "i": 0.0,
+   "we": 0.0,
+   "you": 0.0,
+   "he": 0.0,
+   "she": 0.0,
+   "it": 7.48,
+   "they": 0.0,
+   "them": 0.0,
+   "his": 0.0,
+   "her": 0.0,
+   "its": 7.48,
+   "our": 0.0,
+   "their": 7.48,
+   "this": 4.99,
+   "that": 12.47,
+   "these": 4.99,
+   "those": 2.49,
+   "am": 0.0,
+   "have": 4.99,
+   "has": 2.49,
+   "had": 0.0,
+   "having": 0.0,
+   "do": 0.0,
+   "does": 0.0,
+   "did": 0.0,
+   "doing": 0.0,
+   "would": 0.0,
+   "could": 0.0,
+   "shall": 0.0,
+   "may": 2.49,
+   "might": 0.0,
+   "must": 7.48,
+   "per": 0.0,
+   "via": 0.0,
+   "among": 2.49,
+   "within": 0.0,
+   "without": 0.0,
+   "upon": 0.0,
+   "toward": 0.0,
+   "towards": 0.0,
+   "against": 0.0,
+   "along": 0.0,
+   "across": 2.49,
+   "behind": 0.0,
+   "beyond": 0.0,
+   "plus": 0.0,
+   "except": 0.0,
+   "about": 0.0,
+   "off": 0.0,
+   "over": 0.0,
+   "out": 0.0,
+   "up": 0.0,
+   "down": 0.0
+  },
+  "punct_per1k": {
+   "em_dash": 2.49,
+   "semicolon": 0.0,
+   "colon": 0.0,
+   "comma": 49.88,
+   "paren_open": 2.49,
+   "question": 0.0,
+   "exclaim": 0.0,
+   "hyphenated_compounds": 19.95
+  },
+  "type_token_ratio": 0.638,
+  "pct_words_3plus_syll": 33.4,
+  "hedges_per1k": 4.99,
+  "assertives_per1k": 9.98,
+  "first_person_per1k": 0.0,
+  "we_per1k": 0.0,
+  "top_content_words": [
+   [
+    "joint",
+    9
+   ],
+   [
+    "patient",
+    7
+   ],
+   [
+    "awareness",
+    3
+   ],
+   [
+    "replacement",
+    3
+   ],
+   [
+    "satisfaction",
+    3
+   ],
+   [
+    "landscape",
+    2
+   ],
+   [
+    "outcome",
+    2
+   ],
+   [
+    "instruments",
+    2
+   ],
+   [
+    "forgotten",
+    2
+   ],
+   [
+    "score",
+    2
+   ],
+   [
+    "activities",
+    2
+   ],
+   [
+    "insights",
+    2
+   ],
+   [
+    "clinical",
+    2
+   ],
+   [
+    "outcomes",
+    2
+   ],
+   [
+    "factors",
+    2
+   ],
+   [
+    "forward",
+    2
+   ],
+   [
+    "assessment",
+    2
+   ],
+   [
+    "deeper",
+    2
+   ],
+   [
+    "individuals",
+    2
+   ],
+   [
+    "remain",
+    2
+   ],
+   [
+    "recovery",
+    2
+   ],
+   [
+    "who",
+    2
+   ],
+   [
+    "implant",
+    2
+   ],
+   [
+    "synthetic",
+    1
+   ],
+   [
+    "sample",
+    1
+   ]
+  ]
+ }
+}

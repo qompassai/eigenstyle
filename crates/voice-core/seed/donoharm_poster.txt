@@ -1,0 +1,33 @@
+                                              First, Do No Harm:
+                                    On Making AI safe, secure and trustworthy
+                                                                  Matt A. Porter, B.S1, Henry Mroch MD3
+                                                                       1
+                                                                        Qompass AI, Spokane, WA
+                                      2
+                                       Department of Nephrology, Washington State University Elson S. College of Medicine, Spokane, WA
+
+
+
+                 Intro:                                     Methods                                                                            Results
+   Generative Artificial Intelligence           We developed a novel protocol of                                               Current SMM capabilities include multi-
+  (Gen AI) now is increasingly used in         software tooling to train, host, and                                             language conversation understanding
+medicine and education. Acute impacts        deploy small multimodal AI models on-                                              with audio-text generation to address
+range from residency selection, clinical     device secured by NIST-endorsed post-                                              cultural and physical communication
+documentation, and copilots to learners           quantum cryptography for $0                                                        barriers. All Post Quantum
+            and educators
+                                                                                                                               Cryptography Benchmarks and links to
+                                                                                                                                code are accessible via qr-code to our
+                                                                                                                                           public github.
+
+
+
+
+               1,000,000+ Public
+                  AI models &
+                    datasets
+                                                                                                                                                Conclusion
+       How can individuals and                                                                                                         We public-source our code with
+                                                    We implement CUDA 12.8, Pytorch 2.6,                                             asynchronous video under Q-CDA/A-
+     institutions adopt quality AI?                OpenSSL 3.4.1, with oqs-provider 0.80 on                                                 GPL3.0 Dual License
+                                                                 Arch Linux
+

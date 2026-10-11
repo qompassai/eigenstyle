@@ -1,0 +1,27 @@
+To the Editor, The beginning of regulatory action foreshadowed by Jayakumar et al. [4] in their excellent column arrived on October 30, 2023, as President Biden issued Executive Order 14110: On the Safe, Secure, and Trustworthy Development and Use of Artiﬁcial Intelligence [2]. Two days later, the United Kingdom hosted the inaugural Global AI Safety Summit with the international community rising to the call for AI alignment [7]. Despite its complex technological capabilities, AI
+
+Oosterhoff JHF, Bozic KJ. Value-based Healthcare: Can Generative Artiﬁcial Intelligence and Large Language Models be The author certiﬁes that there are no funding or commercial associations (consultancies, stock ownership, equity interest, patent/ licensing arrangements, etc.) that might pose a conﬂict of interest in connection with the submitted article related to the author or any immediate family members. authors and Clinical Orthopaedics and Related Research® editors and board members are on ﬁle with the publication and can be viewed on request. and do not reﬂect the opinion or policy of CORR® or The Association of Bone and Joint Surgeons®. North Pine Street, Ste 292-293, Spokane, WA
+
+alignment asks the same questions as orthopaedic alignment: Am I doing right, and in the right way? The National Institute for Standards of Technology leads American efforts to qualify and standardize AI alignment with deliberate input requested from multiple federal agencies, national organizations, academia, industry, and startup entrepreneurs (Table 1). AI models meeting these alignment criteria will ﬁnd universal use whereas misaligned models will face appropriate, corrective action. Dr. Geoffrey Hinton, the “godfather of AI,” built the neural networks of deep learning in pursuit of understanding how the human brain works [1, 10]. Deep learning training emulates the synaptic plasticity and long-term potentiation observed with learning in the human brain. Generative AI large language models (LLMs) emerged following this process. Data quality, training time, and neural network architecture drive LLM performance, domain speciﬁcity, and data modality. Early LLMs built with convolutional neural networks and recurrent neural networks found limited use outside industry and academia because of computational requirements [6]. Deep learning methodology
+
+1
+
+Spokane, WA, USA
+
+departed from traditional machine learning methodologies, earning Dr. Hinton decades of derision and deeplearning marginalization as a niche machine-learning subdiscipline. The multiheaded self-attention mechanism of the transformer neural network architecture changed that paradigm in 2017 [5]. Transformer LLMs performed natural language processing through proliﬁc parallel sequencing with outputs reﬂecting contextual understanding not seen with convolutional neural networks and recurrent neural networks. The self-attention mechanism sparked the invention of new architectures and adaptation of convolutional neural networks and recurrent neural networks. The March 2023 leak of Frontier Large Language Model Meta AI (LLaMA) prompted further innovation from the global community [7]. Less than a year after ChatGPT’s release, large multimodal models like GPT-4(V) and a consistent stream of groundbreaking publications freely available from the National Institutes of Health endorsed eprint server arxiv.org as the new normal for the collective scientiﬁc community [7-9]. Jayakumar et al. [4] expertly frame the necessity for uniﬁed urgency for clinical leadership with AI policy: Clinicians ultimately maintain the liability. The regulatory landscape is further complicated by the growing
+
+Copyright © 2024 by the Association of Bone and Joint Surgeons. Unauthorized reproduction of this article is prohibited.
+
+2
+
+Clinical Orthopaedics and Related Research®
+
+Porter
+
+Letter to the Editor
+
+2i3PDH9xfa+80LZBxvwmWVyQQ= on 03/08/2024 Dual-use foundation model
+
+Executive order deliverable - Providing input on the risks and beneﬁts of public AI models in orthopaedic education and practice - Analysis of legal and ethical implications of AI in orthopaedic malpractice and liability. - Use of AI development playbook to enhance AI integration in orthopaedic surgery and education.
+
+intelligence, supporting patientcentered decision-making while alleviating the cognitive burden plaguing clinicians. Whether replacing arthritic knees or healthcare AI systems, alignment necessitates deliberate decisionmaking driven by clinically signiﬁcant evidence with the goal of delivering quality, patient-centered care.

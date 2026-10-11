@@ -1,0 +1,5 @@
+# Pinned to primo's installed toolchain (cargo/rustc 1.99.0), matching the
+# estate's research-mcp pin.
+[toolchain]
+channel = "1.99.0"
+components = ["clippy", "rustfmt"]

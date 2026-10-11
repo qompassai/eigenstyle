@@ -1,0 +1,16 @@
+[package]
+name = "voice-core"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Core library for the voice-profile MCP server: corpus store, stylometric fingerprint engine, deterministic draft checker"
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+# HTTP client for the fetch-a-URL add flow: ureq 2 is blocking, small, and
+# rustls-backed by default — the same choice as the estate's research-mcp.
+ureq.workspace = true
+
+[lints.clippy]
+all = "warn"

@@ -1,0 +1,13 @@
+[package]
+name = "voice-gui"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "GPUI desktop GUI for the voice-profile corpus, fingerprint, and draft checker"
+
+[dependencies]
+gpui-ce.workspace = true
+voice-core.workspace = true
+
+[lints.clippy]
+all = "warn"
