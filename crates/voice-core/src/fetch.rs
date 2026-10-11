@@ -23,7 +23,10 @@ pub fn fetch_url_text(url: &str) -> Result<String> {
     }
     let lowered = url.to_ascii_lowercase();
     if !lowered.starts_with("http://") && !lowered.starts_with("https://") {
-        return Err(VoiceError::invalid("url", "only http:// and https:// URLs are fetched"));
+        return Err(VoiceError::invalid(
+            "url",
+            "only http:// and https:// URLs are fetched",
+        ));
     }
     let agent = ureq::AgentBuilder::new()
         .timeout(Duration::from_secs(FETCH_TIMEOUT_SECONDS))
@@ -84,7 +87,18 @@ pub fn html_to_text(html: &str) -> String {
                 .to_ascii_lowercase();
             if matches!(
                 tag_name.as_str(),
-                "p" | "div" | "br" | "li" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "tr" | "section" | "article"
+                "p" | "div"
+                    | "br"
+                    | "li"
+                    | "h1"
+                    | "h2"
+                    | "h3"
+                    | "h4"
+                    | "h5"
+                    | "h6"
+                    | "tr"
+                    | "section"
+                    | "article"
             ) {
                 out.push('\n');
             } else {

@@ -128,7 +128,10 @@ pub fn feature_vector(fp: &Fingerprint) -> BTreeMap<String, f64> {
     vec.insert("punct:comma".to_string(), p.comma);
     vec.insert("punct:paren_open".to_string(), p.paren_open);
     vec.insert("punct:question".to_string(), p.question);
-    vec.insert("punct:hyphenated_compounds".to_string(), p.hyphenated_compounds);
+    vec.insert(
+        "punct:hyphenated_compounds".to_string(),
+        p.hyphenated_compounds,
+    );
     vec.insert("sent_len_mean".to_string(), fp.sent_len_mean);
     vec.insert("sent_len_median".to_string(), fp.sent_len_median);
     vec.insert("sent_pct_short_le10".to_string(), fp.sent_pct_short_le10);
@@ -187,7 +190,11 @@ fn stats(vecs: &[BTreeMap<String, f64>], features: &[String]) -> BTreeMap<String
 
 /// Mean |z| of a feature vector against a reference (the checker's
 /// delta; also the LOO calibration distance).
-pub fn delta_against(vec: &BTreeMap<String, f64>, reference: &BTreeMap<String, RefStat>, features: &[String]) -> f64 {
+pub fn delta_against(
+    vec: &BTreeMap<String, f64>,
+    reference: &BTreeMap<String, RefStat>,
+    features: &[String],
+) -> f64 {
     if features.is_empty() {
         return 0.0;
     }
@@ -195,7 +202,10 @@ pub fn delta_against(vec: &BTreeMap<String, f64>, reference: &BTreeMap<String, R
         .iter()
         .map(|f| {
             let v = vec.get(f).copied().unwrap_or(0.0);
-            let r = reference.get(f).copied().unwrap_or(RefStat { mean: 0.0, sd: 1.0 });
+            let r = reference
+                .get(f)
+                .copied()
+                .unwrap_or(RefStat { mean: 0.0, sd: 1.0 });
             (v - r.mean).abs() / r.sd
         })
         .sum();
@@ -231,8 +241,14 @@ impl FingerprintDoc {
             b.1.partial_cmp(a.1)
                 .unwrap_or(std::cmp::Ordering::Equal)
                 .then_with(|| {
-                    let ia = FUNCTION_WORDS.iter().position(|w| *w == a.0.as_str()).unwrap_or(usize::MAX);
-                    let ib = FUNCTION_WORDS.iter().position(|w| *w == b.0.as_str()).unwrap_or(usize::MAX);
+                    let ia = FUNCTION_WORDS
+                        .iter()
+                        .position(|w| *w == a.0.as_str())
+                        .unwrap_or(usize::MAX);
+                    let ib = FUNCTION_WORDS
+                        .iter()
+                        .position(|w| *w == b.0.as_str())
+                        .unwrap_or(usize::MAX);
                     ia.cmp(&ib)
                 })
         });
@@ -303,21 +319,22 @@ impl FingerprintDoc {
     /// Set (or partially update) a user correction. Validated: the
     /// feature must exist, values finite, SD strictly positive (a zero
     /// SD would make the checker's z-scores meaningless).
-    pub fn set_correction(&mut self, feature: &str, mean: Option<f64>, sd: Option<f64>) -> Result<()> {
+    pub fn set_correction(
+        &mut self,
+        feature: &str,
+        mean: Option<f64>,
+        sd: Option<f64>,
+    ) -> Result<()> {
         if !self.reference.contains_key(feature) {
             return Err(VoiceError::NotFound {
                 what: format!("feature {feature}"),
             });
         }
-        if let Some(m) = mean {
-            if !m.is_finite() {
-                return Err(VoiceError::invalid("mean", "must be finite"));
-            }
+        if mean.is_some_and(|m| !m.is_finite()) {
+            return Err(VoiceError::invalid("mean", "must be finite"));
         }
-        if let Some(s) = sd {
-            if !s.is_finite() || s <= 0.0 {
-                return Err(VoiceError::invalid("sd", "must be finite and > 0"));
-            }
+        if sd.is_some_and(|s| !s.is_finite() || s <= 0.0) {
+            return Err(VoiceError::invalid("sd", "must be finite and > 0"));
         }
         let entry = self.corrections.entry(feature.to_string()).or_default();
         if mean.is_some() {
@@ -401,13 +418,20 @@ mod tests {
         let corpus = corpus_with(&[PIECE_A, PIECE_B]);
         let mut doc = FingerprintDoc::build(&corpus).expect("builds");
         let computed = doc.reference["sent_len_mean"];
-        doc.set_correction("sent_len_mean", Some(99.0), None).expect("known feature");
+        doc.set_correction("sent_len_mean", Some(99.0), None)
+            .expect("known feature");
         assert!(doc.is_corrected("sent_len_mean"));
         assert_eq!(doc.effective_reference()["sent_len_mean"].mean, 99.0);
         assert_eq!(doc.reference["sent_len_mean"], computed);
         // Adversarial: zero SD and unknown features are refused.
-        assert!(doc.set_correction("sent_len_mean", None, Some(0.0)).is_err());
-        assert!(doc.set_correction("fw:nonexistent", Some(1.0), None).is_err());
+        assert!(
+            doc.set_correction("sent_len_mean", None, Some(0.0))
+                .is_err()
+        );
+        assert!(
+            doc.set_correction("fw:nonexistent", Some(1.0), None)
+                .is_err()
+        );
         doc.clear_corrections();
         assert!(!doc.is_corrected("sent_len_mean"));
     }

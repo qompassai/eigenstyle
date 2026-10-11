@@ -220,7 +220,11 @@ impl Corpus {
     /// retrieval-bank pattern.
     pub fn exemplars(&self, genre: &str, limit: usize) -> Vec<Exemplar> {
         let mut out = Vec::new();
-        for sample in self.samples.iter().filter(|s| s.included && s.genre == genre) {
+        for sample in self
+            .samples
+            .iter()
+            .filter(|s| s.included && s.genre == genre)
+        {
             for para in paragraphs(&sample.text) {
                 if out.len() >= limit {
                     return out;
@@ -305,7 +309,9 @@ mod tests {
     #[test]
     fn add_sample_validates_and_normalizes() {
         let mut corpus = Corpus::new();
-        let s = corpus.add_sample(new_sample(prose(40))).expect("valid sample");
+        let s = corpus
+            .add_sample(new_sample(prose(40)))
+            .expect("valid sample");
         assert_eq!(s.genre, "scholarly");
         assert_eq!(s.id, 1);
         assert!(s.included);
@@ -318,9 +324,17 @@ mod tests {
         // Adversarial: empty text.
         assert!(corpus.add_sample(new_sample(String::new())).is_err());
         // Adversarial: below the token floor.
-        assert!(corpus.add_sample(new_sample("too short".to_string())).is_err());
+        assert!(
+            corpus
+                .add_sample(new_sample("too short".to_string()))
+                .is_err()
+        );
         // Adversarial: oversized text.
-        assert!(corpus.add_sample(new_sample("word ".repeat(60_000))).is_err());
+        assert!(
+            corpus
+                .add_sample(new_sample("word ".repeat(60_000)))
+                .is_err()
+        );
         // Adversarial: shell-shaped genre tag.
         let mut bad = new_sample(prose(40));
         bad.genre = "x; rm -rf".to_string();

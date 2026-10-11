@@ -97,10 +97,8 @@ fn normalize(text: &str) -> String {
         .replace('\u{FB00}', "ff")
         .replace('\u{FB03}', "ffi")
         .replace('\u{FB04}', "ffl")
-        .replace('\u{2018}', "'")
-        .replace('\u{2019}', "'")
-        .replace('\u{201C}', "\"")
-        .replace('\u{201D}', "\"")
+        .replace(['\u{2018}', '\u{2019}'], "'")
+        .replace(['\u{201C}', '\u{201D}'], "\"")
         .replace('\u{2013}', "-")
 }
 
@@ -317,7 +315,12 @@ pub fn measure(text: &str) -> Fingerprint {
         *counts.entry(tok.as_str()).or_insert(0) += 1;
         first_seen.entry(tok.as_str()).or_insert(idx);
     }
-    let per1k = |c: u64| round_dp(1000.0 * f64::from(u32::try_from(c).unwrap_or(u32::MAX)) / nf, 2);
+    let per1k = |c: u64| {
+        round_dp(
+            1000.0 * f64::from(u32::try_from(c).unwrap_or(u32::MAX)) / nf,
+            2,
+        )
+    };
 
     let sents = sentences(&text);
     let slens: Vec<f64> = sents
@@ -336,7 +339,9 @@ pub fn measure(text: &str) -> Fingerprint {
     }
     let count_char = |c: char| text.matches(c).count();
     let punct_per1k = PunctRates {
-        em_dash: per1k(u64::try_from(count_char('\u{2014}') + text.matches(" -- ").count()).unwrap_or(0)),
+        em_dash: per1k(
+            u64::try_from(count_char('\u{2014}') + text.matches(" -- ").count()).unwrap_or(0),
+        ),
         semicolon: per1k(u64::try_from(count_char(';')).unwrap_or(0)),
         colon: per1k(u64::try_from(count_char(':')).unwrap_or(0)),
         comma: per1k(u64::try_from(count_char(',')).unwrap_or(0)),
@@ -364,14 +369,20 @@ pub fn measure(text: &str) -> Fingerprint {
     content.truncate(25);
 
     let sum_list = |list: &[&str]| -> u64 {
-        list.iter().map(|w| counts.get(w).copied().unwrap_or(0)).sum()
+        list.iter()
+            .map(|w| counts.get(w).copied().unwrap_or(0))
+            .sum()
     };
     let three_plus = toks.iter().filter(|t| syllables(t) >= 3).count();
 
     Fingerprint {
         words: n,
         sentences: sents.len(),
-        sent_len_mean: if slens.is_empty() { 0.0 } else { round_dp(mean(&slens), 2) },
+        sent_len_mean: if slens.is_empty() {
+            0.0
+        } else {
+            round_dp(mean(&slens), 2)
+        },
         sent_len_median: if slens.is_empty() {
             0.0
         } else {
@@ -386,7 +397,10 @@ pub fn measure(text: &str) -> Fingerprint {
             0.0
         } else {
             round_dp(
-                100.0 * f64::from(u32::try_from(slens.iter().filter(|x| **x <= 10.0).count()).unwrap_or(0))
+                100.0
+                    * f64::from(
+                        u32::try_from(slens.iter().filter(|x| **x <= 10.0).count()).unwrap_or(0),
+                    )
                     / f64::from(u32::try_from(slens.len()).unwrap_or(1)),
                 1,
             )
@@ -395,12 +409,19 @@ pub fn measure(text: &str) -> Fingerprint {
             0.0
         } else {
             round_dp(
-                100.0 * f64::from(u32::try_from(slens.iter().filter(|x| **x >= 30.0).count()).unwrap_or(0))
+                100.0
+                    * f64::from(
+                        u32::try_from(slens.iter().filter(|x| **x >= 30.0).count()).unwrap_or(0),
+                    )
                     / f64::from(u32::try_from(slens.len()).unwrap_or(1)),
                 1,
             )
         },
-        para_len_mean: if plens.is_empty() { 0.0 } else { round_dp(mean(&plens), 1) },
+        para_len_mean: if plens.is_empty() {
+            0.0
+        } else {
+            round_dp(mean(&plens), 1)
+        },
         para_len_median: if plens.is_empty() {
             0.0
         } else {
@@ -434,7 +455,10 @@ mod tests {
     #[test]
     fn tokenize_apostrophe_rule() {
         // Validation: one internal apostrophe joins; a second splits.
-        assert_eq!(tokenize("Don't stop believin' now"), vec!["don't", "stop", "believin", "now"]);
+        assert_eq!(
+            tokenize("Don't stop believin' now"),
+            vec!["don't", "stop", "believin", "now"]
+        );
         // Adversarial: leading apostrophe is not part of a token.
         assert_eq!(tokenize("'tis the season"), vec!["tis", "the", "season"]);
     }

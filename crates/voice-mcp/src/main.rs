@@ -150,7 +150,11 @@ impl Server {
 
     /// Serve until EOF. I/O failures on the transport are fatal;
     /// per-request failures are reported in-band.
-    fn serve<R: BufRead, W: Write>(&mut self, reader: &mut R, writer: &mut W) -> std::io::Result<()> {
+    fn serve<R: BufRead, W: Write>(
+        &mut self,
+        reader: &mut R,
+        writer: &mut W,
+    ) -> std::io::Result<()> {
         let mut line = Vec::new();
         loop {
             line.clear();
@@ -162,7 +166,12 @@ impl Server {
                 return Ok(()); // EOF
             }
             if line.len() > MAX_LINE_BYTES {
-                self.send_error(writer, Value::Null, PARSE_ERROR, "request line exceeds size bound")?;
+                self.send_error(
+                    writer,
+                    Value::Null,
+                    PARSE_ERROR,
+                    "request line exceeds size bound",
+                )?;
                 // Drain the remainder of the oversized line.
                 let mut chunk = Vec::new();
                 loop {
@@ -220,11 +229,9 @@ impl Server {
         };
         let id = object.get("id").cloned();
         let method = object.get("method").and_then(Value::as_str).unwrap_or("");
-        if id.is_none() {
-            // Notification: initialized / cancelled / progress — acknowledged silently.
-            return None;
-        }
-        let id = id.unwrap_or(Value::Null);
+        // Notification (no id): initialized / cancelled / progress —
+        // acknowledged silently.
+        let id = id?;
         let params = object.get("params").cloned().unwrap_or(Value::Null);
         match method {
             "initialize" => Some(success_response(id, self.initialize(&params))),
@@ -310,7 +317,10 @@ impl Server {
     }
 
     fn tool_check_draft(&self, args: &Value) -> Result<Value, ToolFailure> {
-        let args = strict_object(args, &["text", "file_path", "source_text", "source_file_path"])?;
+        let args = strict_object(
+            args,
+            &["text", "file_path", "source_text", "source_file_path"],
+        )?;
         let draft = read_text_source(&args, "text", "file_path")?;
         let source = if args.contains_key("source_text") || args.contains_key("source_file_path") {
             Some(read_text_source(&args, "source_text", "source_file_path")?)
@@ -355,10 +365,10 @@ impl Server {
             .features
             .iter()
             .map(|f| {
-                let stat = effective.get(f).copied().unwrap_or(voice_core::fingerprint::RefStat {
-                    mean: 0.0,
-                    sd: 0.0,
-                });
+                let stat = effective
+                    .get(f)
+                    .copied()
+                    .unwrap_or(voice_core::fingerprint::RefStat { mean: 0.0, sd: 0.0 });
                 json!({
                     "name": f,
                     "mean": stat.mean,
@@ -386,7 +396,15 @@ impl Server {
     fn tool_ingest_sample(&mut self, args: &Value) -> Result<Value, ToolFailure> {
         let args = strict_object(
             args,
-            &["title", "genre", "authorship", "source", "text", "file_path", "url"],
+            &[
+                "title",
+                "genre",
+                "authorship",
+                "source",
+                "text",
+                "file_path",
+                "url",
+            ],
         )?;
         let title = required_str(&args, "title")?.to_string();
         let genre = required_str(&args, "genre")?.to_string();
@@ -416,7 +434,13 @@ impl Server {
 
     fn tool_list_corpus(&self, args: &Value) -> Result<Value, ToolFailure> {
         let _ = strict_object(args, &[])?;
-        let rows: Vec<Value> = self.store.corpus.samples().iter().map(manifest_row).collect();
+        let rows: Vec<Value> = self
+            .store
+            .corpus
+            .samples()
+            .iter()
+            .map(manifest_row)
+            .collect();
         Ok(json!({
             "samples": rows,
             "sample_count": self.store.corpus.samples().len(),
@@ -427,7 +451,10 @@ impl Server {
 
     fn tool_recompute_fingerprint(&mut self, args: &Value) -> Result<Value, ToolFailure> {
         let args = strict_object(args, &["dry_run"])?;
-        let dry_run = args.get("dry_run").and_then(Value::as_bool).unwrap_or(false);
+        let dry_run = args
+            .get("dry_run")
+            .and_then(Value::as_bool)
+            .unwrap_or(false);
         let (doc, deltas, old_bands, new_bands) = self.store.recompute(dry_run)?;
         let changed: Vec<Value> = deltas
             .iter()
@@ -559,7 +586,10 @@ fn read_sample_text(args: &Map<String, Value>) -> Result<(String, String), ToolF
         return Ok((read_bounded_file(path)?, format!("file: {path}")));
     }
     let url = args.get("url").and_then(Value::as_str).unwrap_or("");
-    Ok((voice_core::fetch::fetch_url_text(url)?, format!("url: {url}")))
+    Ok((
+        voice_core::fetch::fetch_url_text(url)?,
+        format!("url: {url}"),
+    ))
 }
 
 fn read_bounded_file(path: &str) -> Result<String, ToolFailure> {
@@ -574,9 +604,8 @@ fn read_bounded_file(path: &str) -> Result<String, ToolFailure> {
             format!("file exceeds {MAX_FILE_BYTES} bytes"),
         )));
     }
-    String::from_utf8(bytes).map_err(|_| {
-        ToolFailure::from(VoiceError::invalid("file_path", "file is not valid UTF-8"))
-    })
+    String::from_utf8(bytes)
+        .map_err(|_| ToolFailure::from(VoiceError::invalid("file_path", "file is not valid UTF-8")))
 }
 
 fn manifest_row(sample: &voice_core::Sample) -> Value {
@@ -640,8 +669,7 @@ mod tests {
     use super::*;
 
     fn run_session(tag: &str, input: &str) -> Vec<Value> {
-        let dir = std::env::temp_dir()
-            .join(format!("voice-mcp-unit-{tag}-{}", std::process::id()));
+        let dir = std::env::temp_dir().join(format!("voice-mcp-unit-{tag}-{}", std::process::id()));
         let _ = std::fs::remove_dir_all(&dir);
         let store = Store::open(&dir).expect("seeded store");
         let mut server = Server::new(store);
@@ -666,11 +694,20 @@ mod tests {
         );
         assert_eq!(responses.len(), 2);
         assert_eq!(responses[0]["result"]["protocolVersion"], "2024-11-05");
-        let tools = responses[1]["result"]["tools"].as_array().expect("tools array");
+        let tools = responses[1]["result"]["tools"]
+            .as_array()
+            .expect("tools array");
         let names: Vec<&str> = tools.iter().filter_map(|t| t["name"].as_str()).collect();
         assert_eq!(
             names,
-            ["check_draft", "get_exemplars", "get_profile", "ingest_sample", "list_corpus", "recompute_fingerprint"]
+            [
+                "check_draft",
+                "get_exemplars",
+                "get_profile",
+                "ingest_sample",
+                "list_corpus",
+                "recompute_fingerprint"
+            ]
         );
     }
 

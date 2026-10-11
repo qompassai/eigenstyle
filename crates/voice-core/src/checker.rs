@@ -116,12 +116,11 @@ pub fn extract_numbers(text: &str) -> Vec<String> {
             let start = i;
             i += 1;
             while i < chars.len() {
-                if chars[i].is_ascii_digit() {
-                    i += 1;
-                } else if (chars[i] == '.' || chars[i] == ',')
+                let digit = chars[i].is_ascii_digit();
+                let inner_punct = (chars[i] == '.' || chars[i] == ',')
                     && i + 1 < chars.len()
-                    && chars[i + 1].is_ascii_digit()
-                {
+                    && chars[i + 1].is_ascii_digit();
+                if digit || inner_punct {
                     i += 1;
                 } else {
                     break;
@@ -149,7 +148,7 @@ pub fn extract_urls(text: &str) -> Vec<String> {
             .or_else(|| token.find("www."));
         if let Some(idx) = start {
             let raw = &token[idx..];
-            let trimmed = raw.trim_end_matches(|c| matches!(c, '.' | ',' | ';' | ')' | ']' | '}' | '"' | '\''));
+            let trimmed = raw.trim_end_matches(['.', ',', ';', ')', ']', '}', '"', '\'']);
             if !trimmed.is_empty() {
                 out.push(trimmed.to_string());
             }
@@ -159,7 +158,10 @@ pub fn extract_urls(text: &str) -> Vec<String> {
 }
 
 fn is_malformed_url(url: &str) -> bool {
-    if let Some(rest) = url.strip_prefix("http://").or_else(|| url.strip_prefix("https://")) {
+    if let Some(rest) = url
+        .strip_prefix("http://")
+        .or_else(|| url.strip_prefix("https://"))
+    {
         let host = rest.split('/').next().unwrap_or("");
         host.is_empty() || (!host.contains('.') && host != "localhost")
     } else {
@@ -210,7 +212,11 @@ pub fn check_draft(
         dropped_urls: source
             .map(|s| multiset_missing(&extract_urls(s), &draft_urls))
             .unwrap_or_default(),
-        malformed_urls: draft_urls.iter().filter(|u| is_malformed_url(u)).cloned().collect(),
+        malformed_urls: draft_urls
+            .iter()
+            .filter(|u| is_malformed_url(u))
+            .cloned()
+            .collect(),
     };
     let lowered = draft.to_lowercase();
     let avoid_hits: Vec<AvoidHit> = avoid_list
@@ -251,10 +257,10 @@ pub fn check_draft(
         .iter()
         .map(|f| {
             let draft_value = vec.get(f).copied().unwrap_or(0.0);
-            let stat = reference.get(f).copied().unwrap_or(crate::fingerprint::RefStat {
-                mean: 0.0,
-                sd: 1.0,
-            });
+            let stat = reference
+                .get(f)
+                .copied()
+                .unwrap_or(crate::fingerprint::RefStat { mean: 0.0, sd: 1.0 });
             FeatureDeviation {
                 feature: f.clone(),
                 draft: draft_value,
@@ -284,14 +290,20 @@ pub fn check_draft(
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::corpus::{Authorship, Corpus, NewSample};
     use crate::FingerprintDoc;
+    use crate::corpus::{Authorship, Corpus, NewSample};
 
     fn doc() -> FingerprintDoc {
         let mut corpus = Corpus::new();
         for (title, text) in [
-            ("A", "The committee reviewed the evidence in full. Every claim was checked against the record, and the record was plain. We therefore conclude that the intervention is safe, that it is effective, and that it should be offered to patients who need it most. Whether in the operating room or in the clinic, the obligation is the same. Deliver care that is careful, measured, and honest about what the evidence shows."),
-            ("B", "Current projections estimate 930,000 primary procedures and approximately 202,966 revisions for a total of 1,132,966 surgeries by 2030. The numbers are not small. They demand a response that is proportionate, careful, and grounded in outcomes that patients themselves report. A score that patients understand may help. It may also mislead, if the validation is weak."),
+            (
+                "A",
+                "The committee reviewed the evidence in full. Every claim was checked against the record, and the record was plain. We therefore conclude that the intervention is safe, that it is effective, and that it should be offered to patients who need it most. Whether in the operating room or in the clinic, the obligation is the same. Deliver care that is careful, measured, and honest about what the evidence shows.",
+            ),
+            (
+                "B",
+                "Current projections estimate 930,000 primary procedures and approximately 202,966 revisions for a total of 1,132,966 surgeries by 2030. The numbers are not small. They demand a response that is proportionate, careful, and grounded in outcomes that patients themselves report. A score that patients understand may help. It may also mislead, if the validation is weak.",
+            ),
         ] {
             corpus
                 .add_sample(NewSample {
@@ -316,20 +328,31 @@ mod tests {
     #[test]
     fn integrity_catches_dropped_numbers_and_urls() {
         let source = "In 2030 we project 1,132,966 surgeries (see https://example.org/report). Costs rose 12%.";
-        let draft = "In the future we project many surgeries (see https://example.org/report). Costs rose.";
+        let draft =
+            "In the future we project many surgeries (see https://example.org/report). Costs rose.";
         let report = check_draft(&doc(), &[], draft, Some(source)).expect("checks");
-        assert_eq!(report.integrity.dropped_numbers, vec!["2030", "1,132,966", "12%"]);
+        assert_eq!(
+            report.integrity.dropped_numbers,
+            vec!["2030", "1,132,966", "12%"]
+        );
         assert!(report.integrity.dropped_urls.is_empty());
         // Adversarial: a dropped URL is caught.
         let draft2 = "In 2030 we project 1,132,966 surgeries. Costs rose 12%.";
         let report2 = check_draft(&doc(), &[], draft2, Some(source)).expect("checks");
-        assert_eq!(report2.integrity.dropped_urls, vec!["https://example.org/report"]);
+        assert_eq!(
+            report2.integrity.dropped_urls,
+            vec!["https://example.org/report"]
+        );
     }
 
     #[test]
     fn malformed_urls_flagged_and_avoid_list_enforced() {
         let draft = "Furthermore, see http:// for the pivotal landscape overview.";
-        let avoid = vec!["furthermore".to_string(), "pivotal".to_string(), "landscape".to_string()];
+        let avoid = vec![
+            "furthermore".to_string(),
+            "pivotal".to_string(),
+            "landscape".to_string(),
+        ];
         let report = check_draft(&doc(), &avoid, draft, None).expect("checks");
         assert_eq!(report.integrity.malformed_urls, vec!["http://"]);
         assert_eq!(report.avoid_hits.len(), 3);

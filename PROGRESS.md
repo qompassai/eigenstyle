@@ -46,3 +46,29 @@ book-writer-mcp / Eden / Arcitext. Seed: `~/workspace/skills/matt-voice/`
   recompute → check with holdout delta 1.196; adversarial frames).
   All pass. Two test-harness bugs fixed en route (shared temp dir race;
   a hand-counted word expectation — the engine's 70 was right).
+- Stage 4 (2026-10-11): voice-tui done — 5 screens over a
+  terminal-independent App state machine; `--snapshot <screen>` headless
+  render via TestBackend. cargo test -p voice-tui: 6 pass (seed list +
+  toggle, add flow, holdout check CLOSE, fingerprint preview→apply +
+  correction cycle, snapshot contains seed titles). Snapshot artifact:
+  screenshots/tui-corpus-snapshot.txt.
+- Stage 5 (2026-10-11): voice-gui done — gpui-ce =0.2.2 +
+  gpui_ce_platform =0.1.0 (wayland+x11). Rendering probe first: Xvfb/X11
+  presents black with this build; weston headless panics gpui's wayland
+  client; cage (wlroots) headless works. Real GUI smoke under cage:
+  corpus view screenshot verified visually (6 samples, 7,674 words,
+  Python-exact per-piece counts) — screenshots/gui-corpus.png;
+  fingerprint view verified (bands CLOSE ≤ 1.779 / DRIFTING ≤ 2.668 =
+  the recorded bands; per-genre values match the profile) —
+  screenshots/gui-fingerprint.png. Text entry = click-to-focus,
+  append/backspace (gpui-ce 0.2 TextField absent; stated limit).
+- Stage 6 (2026-10-11): cargo fmt clean; clippy --workspace
+  --all-targets -D warnings: 0 errors (11 mechanical lints fixed);
+  cargo test --workspace: 33 tests, 0 failures (core 18+4, mcp 3+2,
+  tui 6). Release build of all three binaries clean.
+- IDE gate (2026-10-11): headless nvim on primo, live diver config,
+  workspace files open — clients attached include rust_analyzer,
+  bacon-ls, crates-lsp; diagnostics: errors=0, warnings=0. (Four
+  harness attempts preceded the pass: headless nvim over SSH exits
+  without a pty, and a `-S` script runs after VimEnter — final shape:
+  `script -qec` pty + top-level defer_fn.)

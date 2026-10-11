@@ -1,0 +1,68 @@
+┌ voice-mcp — 6 samples, 7674 included words ────────────────────────────────────────────────────────────────┐
+│ 1. Corpus  2. Add writing  3. Fingerprint  4. Check draft  5. Profile                                      │
+└────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+┌ Corpus — j/k move, Space include/exclude ──────────────────────────────────────────────────────────────────┐
+│[x] #1   625w  letter       sole    Value-based Healthcare: Can Generative AI and LLMs be a Catalyst for Val│
+│[x] #2  1396w  project-prose blended First, Do No Harm — project prose (repo README, March 2025)            │
+│[x] #3  1530w  scholarly    blended The Joint Awareness Score (Arthroplasty Today 2023) — first 60%         │
+│[x] #4  2320w  case-report  blended Progressive proximal loosening of bilateral Corail stems: case report an│
+│[x] #5  1634w  case-report  blended ACDF and posterior spinal fusion revision case report (Int J Surg Case R│
+│[x] #6   169w  poster       blended First, Do No Harm — poster text                                         │
+│                                                                                                            │
+│                                                                                                            │
+│                                                                                                            │
+│                                                                                                            │
+│                                                                                                            │
+│                                                                                                            │
+│                                                                                                            │
+│                                                                                                            │
+│                                                                                                            │
+│                                                                                                            │
+│                                                                                                            │
+│                                                                                                            │
+│                                                                                                            │
+│                                                                                                            │
+│                                                                                                            │
+│                                                                                                            │
+│                                                                                                            │
+│                                                                                                            │
+│                                                                                                            │
+│                                                                                                            │
+│                                                                                                            │
+└────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+Ready. Keys: 1-5 switch screens, q quits.
+
+┌ voice-mcp — 6 samples, 7674 included words ────────────────────────────────────────────────────────────────┐
+│ 1. Corpus  2. Add writing  3. Fingerprint  4. Check draft  5. Profile                                      │
+└────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+┌ Fingerprint ───────────────────────────────────────────────────────────────────────────────────────────────┐
+│Bands: CLOSE <= 1.779, DRIFTING <= 2.668   Pieces: 6   r = preview recompute, R = save preview, e = correct │
+│mean, x = clear corrections                                                                                 │
+│> punct:em_dash                mean     0.358  sd    0.801                                                  │
+│  punct:semicolon              mean     1.080  sd    1.634                                                  │
+│  punct:colon                  mean     6.030  sd    4.860                                                  │
+│  punct:comma                  mean    66.103  sd   18.722                                                  │
+│  punct:paren_open             mean    11.915  sd    6.007                                                  │
+│  punct:question               mean     3.692  sd    4.131                                                  │
+│  punct:hyphenated_compounds   mean    18.340  sd    9.421                                                  │
+│  sent_len_mean                mean    24.923  sd    2.000                                                  │
+│  sent_len_median              mean    21.083  sd    2.000                                                  │
+│  sent_pct_short_le10          mean    13.883  sd    2.759                                                  │
+│  sent_pct_long_ge30           mean    24.483  sd    3.246                                                  │
+│  hedges_per1k                 mean     2.608  sd    2.164                                                  │
+│  assertives_per1k             mean     2.580  sd    2.291                                                  │
+│  first_person_per1k           mean    12.803  sd   10.583                                                  │
+│  pct_words_3plus_syll         mean    27.317  sd    3.452                                                  │
+│  fw:the                       mean    45.532  sd   21.849                                                  │
+│  fw:and                       mean    39.077  sd    7.815                                                  │
+│  fw:of                        mean    29.973  sd    9.955                                                  │
+│  fw:a                         mean    20.357  sd    7.306                                                  │
+│  fw:in                        mean    15.465  sd    6.027                                                  │
+│  fw:to                        mean    19.238  sd    7.468                                                  │
+│  fw:with                      mean    16.157  sd    4.080                                                  │
+│  fw:for                       mean    10.725  sd    3.945                                                  │
+│  fw:was                       mean     6.238  sd    6.955                                                  │
+│  fw:that                      mean     6.415  sd    3.611                                                  │
+└────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+Ready. Keys: 1-5 switch screens, q quits.
+

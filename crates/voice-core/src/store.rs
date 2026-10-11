@@ -123,10 +123,10 @@ impl Store {
     /// Default store directory: `$VOICE_MCP_HOME` or
     /// `~/.local/share/voice-mcp`.
     pub fn default_dir() -> PathBuf {
-        if let Ok(home) = std::env::var("VOICE_MCP_HOME") {
-            if !home.is_empty() {
-                return PathBuf::from(home);
-            }
+        if let Ok(home) = std::env::var("VOICE_MCP_HOME")
+            && !home.is_empty()
+        {
+            return PathBuf::from(home);
         }
         if let Some(home) = std::env::home_dir() {
             return home.join(".local").join("share").join("voice-mcp");

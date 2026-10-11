@@ -80,7 +80,13 @@ fn compare_fingerprint(name: &str, rust: &voice_core::Fingerprint, python: &Valu
             0.010_1,
         );
     }
-    for field in ["sent_pct_short_le10", "sent_pct_long_ge30", "pct_words_3plus_syll", "para_len_mean", "para_len_median"] {
+    for field in [
+        "sent_pct_short_le10",
+        "sent_pct_long_ge30",
+        "pct_words_3plus_syll",
+        "para_len_mean",
+        "para_len_median",
+    ] {
         assert_close(
             &format!("{name}.{field}"),
             r[field].as_f64().unwrap_or(f64::NAN),
@@ -110,11 +116,15 @@ fn compare_fingerprint(name: &str, rust: &voice_core::Fingerprint, python: &Valu
             0.010_1,
         );
     }
-    let rust_top: Vec<(String, u64)> = serde_json::from_value(r["top_content_words"].clone())
-        .expect("rust top words shape");
+    let rust_top: Vec<(String, u64)> =
+        serde_json::from_value(r["top_content_words"].clone()).expect("rust top words shape");
     let python_top: Vec<(String, u64)> =
-        serde_json::from_value(python["top_content_words"].clone()).expect("python top words shape");
-    assert_eq!(rust_top, python_top, "{name}: top content words must match exactly");
+        serde_json::from_value(python["top_content_words"].clone())
+            .expect("python top words shape");
+    assert_eq!(
+        rust_top, python_top,
+        "{name}: top content words must match exactly"
+    );
 }
 
 #[test]
@@ -125,7 +135,11 @@ fn stylometry_matches_python_on_every_piece() {
     }
     let pooled_text: String = POOL.iter().map(|n| read_seed(n)).collect();
     compare_fingerprint("pooled", &measure(&pooled_text), &fixture["pooled"]);
-    for name in ["jas_holdout.txt", "cureus_holdout.txt", "synthetic_sample.txt"] {
+    for name in [
+        "jas_holdout.txt",
+        "cureus_holdout.txt",
+        "synthetic_sample.txt",
+    ] {
         let text = std::fs::read_to_string(manifest_dir().join("tests/fixtures").join(name))
             .expect("holdout fixture");
         compare_fingerprint(name, &measure(&text), &fixture[name]);
@@ -135,7 +149,11 @@ fn stylometry_matches_python_on_every_piece() {
 fn seed_corpus() -> Corpus {
     let meta: [(&str, &str, Authorship); 6] = [
         ("corr_letter.txt", "letter", Authorship::Sole),
-        ("donoharm_readme_prose.txt", "project-prose", Authorship::Blended),
+        (
+            "donoharm_readme_prose.txt",
+            "project-prose",
+            Authorship::Blended,
+        ),
         ("jas_corpus.txt", "scholarly", Authorship::Blended),
         ("PMC9201968.txt", "case-report", Authorship::Blended),
         ("PMC8715042.txt", "case-report", Authorship::Blended),
@@ -161,13 +179,21 @@ fn fingerprint_build_matches_recorded_document() {
     let recorded: FingerprintDoc =
         serde_json::from_str(&read_seed("fingerprint.json")).expect("recorded doc parses");
     let built = FingerprintDoc::build(&seed_corpus()).expect("builds");
-    assert_eq!(built.features, recorded.features, "feature list must match exactly");
+    assert_eq!(
+        built.features, recorded.features,
+        "feature list must match exactly"
+    );
     for f in &recorded.features {
         let (b, r) = (built.reference[f], recorded.reference[f]);
         assert_close(&format!("{f}.mean"), b.mean, r.mean, 0.002);
         assert_close(&format!("{f}.sd"), b.sd, r.sd, 0.002);
     }
-    assert_close("bands.close_max", built.bands.close_max, recorded.bands.close_max, 0.002);
+    assert_close(
+        "bands.close_max",
+        built.bands.close_max,
+        recorded.bands.close_max,
+        0.002,
+    );
     assert_close(
         "bands.drifting_max",
         built.bands.drifting_max,
@@ -185,8 +211,18 @@ fn fingerprint_build_matches_recorded_document() {
     // Headline pooled values from the build record, tight tolerance.
     let pooled = measure(&POOL.iter().map(|n| read_seed(n)).collect::<String>());
     assert_close("pooled sent_len_mean", pooled.sent_len_mean, 24.97, 0.001);
-    assert_close("pooled paren_open", pooled.punct_per1k.paren_open, 14.07, 0.001);
-    assert_close("pooled hyphenated", pooled.punct_per1k.hyphenated_compounds, 15.38, 0.001);
+    assert_close(
+        "pooled paren_open",
+        pooled.punct_per1k.paren_open,
+        14.07,
+        0.001,
+    );
+    assert_close(
+        "pooled hyphenated",
+        pooled.punct_per1k.hyphenated_compounds,
+        15.38,
+        0.001,
+    );
 }
 
 #[test]
@@ -194,7 +230,11 @@ fn checker_deltas_match_python_on_holdouts() {
     let recorded: FingerprintDoc =
         serde_json::from_str(&read_seed("fingerprint.json")).expect("recorded doc parses");
     let deltas = read_fixture("parity-deltas.json");
-    for name in ["jas_holdout.txt", "cureus_holdout.txt", "synthetic_sample.txt"] {
+    for name in [
+        "jas_holdout.txt",
+        "cureus_holdout.txt",
+        "synthetic_sample.txt",
+    ] {
         let text = std::fs::read_to_string(manifest_dir().join("tests/fixtures").join(name))
             .expect("holdout fixture");
         let report = check_draft(&recorded, &[], &text, None).expect("checks");

@@ -7,6 +7,7 @@ description = "GPUI desktop GUI for the voice-profile corpus, fingerprint, and d
 
 [dependencies]
 gpui-ce.workspace = true
+gpui_ce_platform.workspace = true
 voice-core.workspace = true
 
 [lints.clippy]

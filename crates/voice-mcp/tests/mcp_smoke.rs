@@ -55,7 +55,10 @@ impl Client {
         self.next_id += 1;
         let id = self.next_id;
         let response = self
-            .send_raw(&json!({"jsonrpc": "2.0", "id": id, "method": method, "params": params}).to_string())
+            .send_raw(
+                &json!({"jsonrpc": "2.0", "id": id, "method": method, "params": params})
+                    .to_string(),
+            )
             .expect("response");
         assert_eq!(response["id"], id, "response id matches request id");
         response
@@ -110,8 +113,16 @@ fn full_client_round_trip() {
 
     // Profile carries the readable text and 45 features.
     let profile = client.tool("get_profile", json!({}));
-    assert_eq!(profile["fingerprint"]["features"].as_array().map(Vec::len), Some(45));
-    assert!(profile["profile_markdown"].as_str().unwrap_or("").contains("Porter voice profile"));
+    assert_eq!(
+        profile["fingerprint"]["features"].as_array().map(Vec::len),
+        Some(45)
+    );
+    assert!(
+        profile["profile_markdown"]
+            .as_str()
+            .unwrap_or("")
+            .contains("Porter voice profile")
+    );
     assert_eq!(profile["avoid_list"].as_array().map(Vec::len), Some(12));
 
     // Exemplars come back verbatim from the letter.
@@ -127,7 +138,10 @@ fn full_client_round_trip() {
     let report = client.tool("check_draft", json!({"text": holdout}));
     assert_eq!(report["verdict"], "close");
     let delta = report["delta"].as_f64().expect("delta");
-    assert!((delta - 1.196).abs() <= 0.002, "delta {delta} vs python 1.196");
+    assert!(
+        (delta - 1.196).abs() <= 0.002,
+        "delta {delta} vs python 1.196"
+    );
 
     // Ingest does not recompute.
     let ingested = client.tool(
@@ -170,7 +184,9 @@ fn adversarial_frames_and_bounds() {
     // Malformed JSON yields -32700, and the server stays alive.
     let response = client.send_raw("{not json").expect("parse error response");
     assert_eq!(response["error"]["code"], -32700);
-    let response = client.send_raw("{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"bogus\"}").expect("response");
+    let response = client
+        .send_raw("{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"bogus\"}")
+        .expect("response");
     assert_eq!(response["error"]["code"], -32601);
 
     // Unknown tool is a params error, not a crash.
