@@ -19,10 +19,10 @@ use std::collections::BTreeMap;
 use std::path::PathBuf;
 
 use serde_json::Value;
-use voice_core::corpus::{Authorship, Corpus, NewSample};
-use voice_core::fingerprint::FingerprintDoc;
-use voice_core::stylometry::measure;
-use voice_core::{Store, check_draft};
+use eigenstyle_core::corpus::{Authorship, Corpus, NewSample};
+use eigenstyle_core::fingerprint::FingerprintDoc;
+use eigenstyle_core::stylometry::measure;
+use eigenstyle_core::{Store, check_draft};
 
 fn manifest_dir() -> PathBuf {
     PathBuf::from(env!("CARGO_MANIFEST_DIR"))
@@ -54,7 +54,7 @@ fn assert_close(field: &str, rust: f64, python: f64, tol: f64) {
     );
 }
 
-fn compare_fingerprint(name: &str, rust: &voice_core::Fingerprint, python: &Value) {
+fn compare_fingerprint(name: &str, rust: &eigenstyle_core::Fingerprint, python: &Value) {
     let r = serde_json::to_value(rust).expect("serialize rust fingerprint");
     assert_eq!(
         r["words"], python["words"],
@@ -251,7 +251,7 @@ fn checker_deltas_match_python_on_holdouts() {
 
 #[test]
 fn seeded_store_reproduces_the_recorded_fingerprint() {
-    let dir = std::env::temp_dir().join(format!("voice-mcp-parity-{}", std::process::id()));
+    let dir = std::env::temp_dir().join(format!("eigenstyle-parity-{}", std::process::id()));
     let _ = std::fs::remove_dir_all(&dir);
     let store = Store::open(&dir).expect("seeded store opens");
     let recorded: FingerprintDoc =

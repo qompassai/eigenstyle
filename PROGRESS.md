@@ -1,29 +1,29 @@
-# voice-mcp — build progress
+# eigenstyle — build progress
 
 Commissioned 2026-10-11 (Matt): full voice-profile MCP server with TUI and
-GPUI GUI, add-writing flows, tooling adapted from HumanifyMe / brandvoice-mcp /
+GPUI GUI, add-writing flows, tooling adapted from HumanifyMe / brandeigenstyle /
 book-writer-mcp / Eden / Arcitext. Seed: `~/workspace/skills/matt-voice/`
 (Python stylometry + checker = parity reference).
 
 ## Stages
 
-- [x] 0. Scaffold: workspace (voice-core, voice-mcp, voice-tui, voice-gui),
+- [x] 0. Scaffold: workspace (eigenstyle-core, eigenstyle, eigenstyle-tui, eigenstyle-gui),
   toolchain pin 1.99.0, seed corpus + fingerprint + profile imported,
   Python parity fixtures generated (per-piece + pooled fingerprints,
   checker deltas: JAS holdout 1.196, Cureus 1.088, synthetic 1.253).
-- [x] 1. voice-core: stylometry port, corpus store, fingerprint build
+- [x] 1. eigenstyle-core: stylometry port, corpus store, fingerprint build
   (LOO bands), checker (+ integrity + avoid-list), exemplars, URL fetch.
 - [x] 2. Parity gate: Rust engine vs Python fixtures on the seed corpus.
-- [x] 3. voice-mcp: stdio JSON-RPC server, 6 tools, protocol tests, smoke.
-- [ ] 4. voice-tui: ratatui front-end, snapshot smoke.
-- [ ] 5. voice-gui: gpui-ce 0.2.2 front-end, Xvfb smoke + screenshot.
+- [x] 3. eigenstyle: stdio JSON-RPC server, 6 tools, protocol tests, smoke.
+- [ ] 4. eigenstyle-tui: ratatui front-end, snapshot smoke.
+- [ ] 5. eigenstyle-gui: gpui-ce 0.2.2 front-end, Xvfb smoke + screenshot.
 - [ ] 6. Gates: cargo test totals, clippy -D warnings, fmt, IDE gate on
   primo (headless nvim, live diver config), README, local commits.
 
 ## Decisions / bounds
 
-- Persistence: JSON store under `$VOICE_MCP_HOME` (default
-  `~/.local/share/voice-mcp/`), atomic temp+rename writes, append-only
+- Persistence: JSON store under `$EIGENSTYLE_HOME` (default
+  `~/.local/share/eigenstyle/`), atomic temp+rename writes, append-only
   samples (exclude-from-fingerprint flag instead of deletion).
 - Sample bounds: text ≤ 256 KiB, ≥ 10 tokens; draft check ≤ 1 MiB,
   < 200 words = UNRELIABLE verdict (mirrors the Python checker).
@@ -32,7 +32,7 @@ book-writer-mcp / Eden / Arcitext. Seed: `~/workspace/skills/matt-voice/`
 
 ## Log
 
-- Stage 1–2 (2026-10-11): voice-core complete; cargo test -p voice-core:
+- Stage 1–2 (2026-10-11): eigenstyle-core complete; cargo test -p eigenstyle-core:
   18 unit + 4 parity integration tests, all pass on primo (1.99.0).
   Parity: per-piece + pooled fingerprints match Python within one
   rounding unit (counts exact); built fingerprint == recorded
@@ -40,19 +40,19 @@ book-writer-mcp / Eden / Arcitext. Seed: `~/workspace/skills/matt-voice/`
   0.002); checker deltas on holdouts match Python (1.196 / 1.088 /
   1.253). One real bug found+fixed by the gate: word counts must be
   taken after ligature normalization (7693 vs 7674 before the fix).
-- Stage 3 (2026-10-11): voice-mcp server done. cargo test -p voice-mcp:
+- Stage 3 (2026-10-11): eigenstyle server done. cargo test -p eigenstyle:
   3 unit (handshake/catalog, adversarial protocol, strict args) + 2
   binary smoke (full client round trip incl. ingest → dry-run →
   recompute → check with holdout delta 1.196; adversarial frames).
   All pass. Two test-harness bugs fixed en route (shared temp dir race;
   a hand-counted word expectation — the engine's 70 was right).
-- Stage 4 (2026-10-11): voice-tui done — 5 screens over a
+- Stage 4 (2026-10-11): eigenstyle-tui done — 5 screens over a
   terminal-independent App state machine; `--snapshot <screen>` headless
-  render via TestBackend. cargo test -p voice-tui: 6 pass (seed list +
+  render via TestBackend. cargo test -p eigenstyle-tui: 6 pass (seed list +
   toggle, add flow, holdout check CLOSE, fingerprint preview→apply +
   correction cycle, snapshot contains seed titles). Snapshot artifact:
   screenshots/tui-corpus-snapshot.txt.
-- Stage 5 (2026-10-11): voice-gui done — gpui-ce =0.2.2 +
+- Stage 5 (2026-10-11): eigenstyle-gui done — gpui-ce =0.2.2 +
   gpui_ce_platform =0.1.0 (wayland+x11). Rendering probe first: Xvfb/X11
   presents black with this build; weston headless panics gpui's wayland
   client; cage (wlroots) headless works. Real GUI smoke under cage:

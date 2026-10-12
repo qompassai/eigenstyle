@@ -1,4 +1,4 @@
-//! End-to-end stdio smoke: spawn the real `voice-mcp` binary against a
+//! End-to-end stdio smoke: spawn the real `eigenstyle` binary against a
 //! scratch store and drive it like an MCP client — initialize,
 //! tools/list, every tool once, an ingest → recompute (dry-run, then
 //! apply) → check round trip, and adversarial frames (malformed JSON,
@@ -20,14 +20,14 @@ struct Client {
 
 impl Client {
     fn spawn(home: &PathBuf) -> Client {
-        let mut child = Command::new(env!("CARGO_BIN_EXE_voice-mcp"))
+        let mut child = Command::new(env!("CARGO_BIN_EXE_eigenstyle"))
             .arg("--home")
             .arg(home)
             .stdin(Stdio::piped())
             .stdout(Stdio::piped())
             .stderr(Stdio::null())
             .spawn()
-            .expect("spawn voice-mcp");
+            .expect("spawn eigenstyle");
         let stdin = child.stdin.take().expect("stdin");
         let stdout = BufReader::new(child.stdout.take().expect("stdout"));
         Client {
@@ -84,7 +84,7 @@ impl Client {
 }
 
 fn scratch_home(tag: &str) -> PathBuf {
-    let dir = std::env::temp_dir().join(format!("voice-mcp-smoke-{tag}-{}", std::process::id()));
+    let dir = std::env::temp_dir().join(format!("eigenstyle-smoke-{tag}-{}", std::process::id()));
     let _ = std::fs::remove_dir_all(&dir);
     dir
 }
@@ -104,7 +104,7 @@ fn full_client_round_trip() {
         json!({"protocolVersion": "2025-06-18", "capabilities": {}, "clientInfo": {"name": "smoke", "version": "0"}}),
     );
     assert_eq!(init["result"]["protocolVersion"], "2025-06-18");
-    assert_eq!(init["result"]["serverInfo"]["name"], "voice-mcp");
+    assert_eq!(init["result"]["serverInfo"]["name"], "eigenstyle");
 
     // Seeded corpus is visible.
     let corpus = client.tool("list_corpus", json!({}));
@@ -132,7 +132,7 @@ fn full_client_round_trip() {
     // A genuine holdout draft checks CLOSE against the seed fingerprint.
     let holdout = std::fs::read_to_string(
         PathBuf::from(env!("CARGO_MANIFEST_DIR"))
-            .join("../voice-core/tests/fixtures/jas_holdout.txt"),
+            .join("../eigenstyle-core/tests/fixtures/jas_holdout.txt"),
     )
     .expect("holdout fixture");
     let report = client.tool("check_draft", json!({"text": holdout}));

@@ -1,4 +1,4 @@
-//! voice-tui — ratatui terminal UI over voice-core.
+//! eigenstyle-tui — ratatui terminal UI over eigenstyle-core.
 //!
 //! Screens: Corpus (browse, include/exclude), Add (file path or paste,
 //! explicit genre + authorship), Fingerprint (headline + per-feature
@@ -7,7 +7,7 @@
 //! Profile (readable profile viewer).
 //!
 //! The app state machine (`App::handle_key`) is terminal-independent
-//! and unit-tested; `voice-tui --snapshot <screen>` renders one frame
+//! and unit-tested; `eigenstyle-tui --snapshot <screen>` renders one frame
 //! to stdout without a TTY for headless smoke checks.
 
 #![forbid(unsafe_code)]
@@ -23,9 +23,9 @@ use ratatui::style::{Modifier, Style};
 use ratatui::text::{Line, Span};
 use ratatui::widgets::{Block, Borders, List, ListItem, ListState, Paragraph, Wrap};
 
-use voice_core::corpus::{Authorship, NewSample};
-use voice_core::fingerprint::FingerprintDoc;
-use voice_core::{Store, check_draft};
+use eigenstyle_core::corpus::{Authorship, NewSample};
+use eigenstyle_core::fingerprint::FingerprintDoc;
+use eigenstyle_core::{Store, check_draft};
 
 /// Screens in tab order.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -99,7 +99,7 @@ pub struct App {
     check_path: String,
     check_source_path: String,
     check_focus: usize,
-    check_result: Option<voice_core::checker::CheckReport>,
+    check_result: Option<eigenstyle_core::checker::CheckReport>,
     profile_scroll: u16,
     pending_recompute: Option<(FingerprintDoc, String)>,
     message: String,
@@ -503,7 +503,7 @@ impl App {
             .collect();
         let header = Paragraph::new(Line::from(tabs)).block(
             Block::default().borders(Borders::ALL).title(format!(
-                " voice-mcp — {} samples, {} included words ",
+                " eigenstyle — {} samples, {} included words ",
                 self.store.corpus.samples().len(),
                 self.store.corpus.included_word_count()
             )),
@@ -805,7 +805,7 @@ fn main() -> ExitCode {
                 ExitCode::SUCCESS
             }
             Err(e) => {
-                eprintln!("voice-tui: {e}");
+                eprintln!("eigenstyle-tui: {e}");
                 ExitCode::from(2)
             }
         };
@@ -813,7 +813,7 @@ fn main() -> ExitCode {
     match run_tui(home) {
         Ok(()) => ExitCode::SUCCESS,
         Err(e) => {
-            eprintln!("voice-tui: {e}");
+            eprintln!("eigenstyle-tui: {e}");
             ExitCode::from(2)
         }
     }
@@ -832,7 +832,7 @@ mod tests {
     }
 
     fn test_app(tag: &str) -> (App, PathBuf) {
-        let dir = std::env::temp_dir().join(format!("voice-tui-test-{tag}-{}", std::process::id()));
+        let dir = std::env::temp_dir().join(format!("eigenstyle-tui-test-{tag}-{}", std::process::id()));
         let _ = std::fs::remove_dir_all(&dir);
         let app = App::new(dir.clone()).expect("app opens seeded store");
         (app, dir)
@@ -888,7 +888,7 @@ mod tests {
         let (mut app, dir) = test_app("check");
         app.handle_key(key(KeyCode::Char('4')));
         let path = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
-            .join("../voice-core/tests/fixtures/jas_holdout.txt");
+            .join("../eigenstyle-core/tests/fixtures/jas_holdout.txt");
         type_text(&mut app, &path.to_string_lossy());
         app.handle_key(key(KeyCode::Enter));
         let report = app.check_result.expect("check ran");
@@ -934,7 +934,7 @@ mod tests {
     #[test]
     fn render_corpus_snapshot_shows_seed_titles() {
         let dir =
-            std::env::temp_dir().join(format!("voice-tui-test-render-{}", std::process::id()));
+            std::env::temp_dir().join(format!("eigenstyle-tui-test-render-{}", std::process::id()));
         let _ = std::fs::remove_dir_all(&dir);
         let text = snapshot(Screen::Corpus, dir.clone(), 110, 34).expect("snapshot");
         assert!(text.contains("included words"), "header renders: {text}");

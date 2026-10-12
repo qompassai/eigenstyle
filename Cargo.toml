@@ -1,10 +1,10 @@
 [workspace]
 resolver = "2"
 members = [
-    "crates/voice-core",
-    "crates/voice-gui",
-    "crates/voice-mcp",
-    "crates/voice-tui",
+    "crates/eigenstyle-core",
+    "crates/eigenstyle-gui",
+    "crates/eigenstyle",
+    "crates/eigenstyle-tui",
 ]
 
 [workspace.package]
@@ -20,7 +20,7 @@ ratatui = "0.29"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 ureq = "2.12"
-voice-core = { path = "crates/voice-core" }
+eigenstyle-core = { path = "crates/eigenstyle-core" }
 
 [profile.release]
 lto = false

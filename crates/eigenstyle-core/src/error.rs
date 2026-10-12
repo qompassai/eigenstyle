@@ -1,12 +1,12 @@
-//! Typed errors for voice-core. Expected failures (bad input, missing
+//! Typed errors for eigenstyle-core. Expected failures (bad input, missing
 //! records, bound violations, I/O) are values, never panics.
 
 use std::fmt;
 
-/// Result alias used across voice-core.
+/// Result alias used across eigenstyle-core.
 pub type Result<T> = std::result::Result<T, VoiceError>;
 
-/// Everything that can go wrong in voice-core.
+/// Everything that can go wrong in eigenstyle-core.
 #[derive(Debug)]
 pub enum VoiceError {
     /// A field failed validation; `field` names the offending input.

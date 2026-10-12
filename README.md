@@ -1,4 +1,4 @@
-# voice-mcp — your voice profile as a tool
+# eigenstyle — your voice profile as a tool
 
 A Rust workspace that turns Matt Porter's measured writing fingerprint
 (built 2026-10-11 in the `matt-voice` skill) into a living system: an
@@ -18,12 +18,12 @@ bands identical; checker deltas on the held-out pieces match: JAS
 
 | Front-end | Binary | Run it |
 |---|---|---|
-| MCP server (stdio) | `voice-mcp` | `cargo run --release -p voice-mcp` (add `--home <dir>` to choose the store) |
-| Terminal UI | `voice-tui` | `cargo run --release -p voice-tui` |
-| Desktop GUI | `voice-gui` | `cargo run --release -p voice-gui` (Wayland session) |
+| MCP server (stdio) | `eigenstyle` | `cargo run --release -p eigenstyle` (add `--home <dir>` to choose the store) |
+| Terminal UI | `eigenstyle-tui` | `cargo run --release -p eigenstyle-tui` |
+| Desktop GUI | `eigenstyle-gui` | `cargo run --release -p eigenstyle-gui` (Wayland session) |
 
-All three share one store: `$VOICE_MCP_HOME`, else
-`~/.local/share/voice-mcp/`. First open seeds it from the skill's
+All three share one store: `$EIGENSTYLE_HOME`, else
+`~/.local/share/eigenstyle/`. First open seeds it from the skill's
 corpus (6 pieces, 7,674 words), fingerprint, and readable profile.
 
 ## MCP tools
@@ -70,7 +70,7 @@ exactly.
 - **HumanifyMe** — the editable, human-readable fingerprint, and the
   deterministic post-draft verify gate (dropped numbers / broken URLs
   in `check_draft`).
-- **brandvoice-mcp** — ingest → chunk → exemplar retrieval bank
+- **brandeigenstyle** — ingest → chunk → exemplar retrieval bank
   (`get_exemplars` serves corpus paragraphs by genre).
 - **book-writer-mcp / Eden** — per-genre style profiles (the dashboard
   shows pooled per-genre stats), and the builder flow where induced
@@ -101,9 +101,9 @@ is undefined below that) and fails closed otherwise.
 ## Layout
 
 ```
-crates/voice-core   corpus store, stylometry, fingerprint build, checker, fetch
-crates/voice-mcp    stdio MCP server (6 tools)
-crates/voice-tui    ratatui TUI (voice-tui --snapshot <screen> renders headlessly)
-crates/voice-gui    GPUI GUI
+crates/eigenstyle-core   corpus store, stylometry, fingerprint build, checker, fetch
+crates/eigenstyle    stdio MCP server (6 tools)
+crates/eigenstyle-tui    ratatui TUI (eigenstyle-tui --snapshot <screen> renders headlessly)
+crates/eigenstyle-gui    GPUI GUI
 screenshots/        smoke evidence (GUI corpus + fingerprint views, probe)
 ```

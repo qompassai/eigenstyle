@@ -1,5 +1,5 @@
 [package]
-name = "voice-mcp"
+name = "eigenstyle"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
@@ -8,7 +8,7 @@ description = "MCP stdio server for Matt Porter's voice profile (corpus, fingerp
 [dependencies]
 serde.workspace = true
 serde_json.workspace = true
-voice-core.workspace = true
+eigenstyle-core.workspace = true
 
 [lints.clippy]
 all = "warn"

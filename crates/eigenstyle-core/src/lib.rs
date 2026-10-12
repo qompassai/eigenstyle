@@ -1,4 +1,4 @@
-//! voice-core — the single source of truth behind the voice-mcp server,
+//! eigenstyle-core — the single source of truth behind the eigenstyle server,
 //! the ratatui TUI, and the GPUI GUI.
 //!
 //! The crate ports the matt-voice skill's deterministic stylometry

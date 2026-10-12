@@ -216,7 +216,7 @@ impl Corpus {
 
     /// Verbatim exemplar chunks for one genre: paragraphs of included
     /// samples, in corpus order, each truncated at a char boundary to
-    /// [`EXEMPLAR_CHUNK_MAX_CHARS`]. The brandvoice-mcp ingest → chunk →
+    /// [`EXEMPLAR_CHUNK_MAX_CHARS`]. The brandeigenstyle ingest → chunk →
     /// retrieval-bank pattern.
     pub fn exemplars(&self, genre: &str, limit: usize) -> Vec<Exemplar> {
         let mut out = Vec::new();

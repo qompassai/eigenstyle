@@ -1,5 +1,5 @@
 [package]
-name = "voice-tui"
+name = "eigenstyle-tui"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
@@ -9,7 +9,7 @@ description = "ratatui terminal UI for the voice-profile corpus, fingerprint, an
 crossterm.workspace = true
 ratatui.workspace = true
 serde_json.workspace = true
-voice-core.workspace = true
+eigenstyle-core.workspace = true
 
 [lints.clippy]
 all = "warn"

@@ -1460,6 +1460,43 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d0881ea181b1df73ff77ffaaf9c7544ecc11e82fba9b5f27b262a3c73a332555"
 
 [[package]]
+name = "eigenstyle"
+version = "0.1.0"
+dependencies = [
+ "eigenstyle-core",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
+name = "eigenstyle-core"
+version = "0.1.0"
+dependencies = [
+ "serde",
+ "serde_json",
+ "ureq",
+]
+
+[[package]]
+name = "eigenstyle-gui"
+version = "0.1.0"
+dependencies = [
+ "eigenstyle-core",
+ "gpui-ce",
+ "gpui_ce_platform",
+]
+
+[[package]]
+name = "eigenstyle-tui"
+version = "0.1.0"
+dependencies = [
+ "crossterm",
+ "eigenstyle-core",
+ "ratatui",
+ "serde_json",
+]
+
+[[package]]
 name = "either"
 version = "1.19.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -6028,43 +6065,6 @@ name = "version_check"
 version = "0.9.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0b928f33d975fc6ad9f86c8f283853ad26bdd5b10b7f1542aa2fa15e2289105a"
-
-[[package]]
-name = "voice-core"
-version = "0.1.0"
-dependencies = [
- "serde",
- "serde_json",
- "ureq",
-]
-
-[[package]]
-name = "voice-gui"
-version = "0.1.0"
-dependencies = [
- "gpui-ce",
- "gpui_ce_platform",
- "voice-core",
-]
-
-[[package]]
-name = "voice-mcp"
-version = "0.1.0"
-dependencies = [
- "serde",
- "serde_json",
- "voice-core",
-]
-
-[[package]]
-name = "voice-tui"
-version = "0.1.0"
-dependencies = [
- "crossterm",
- "ratatui",
- "serde_json",
- "voice-core",
-]
 
 [[package]]
 name = "vswhom"

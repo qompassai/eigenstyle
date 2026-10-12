@@ -1,4 +1,4 @@
-//! voice-gui — GPUI desktop front-end over voice-core.
+//! eigenstyle-gui — GPUI desktop front-end over eigenstyle-core.
 //!
 //! Same five surfaces as the TUI: Corpus (browse, include/exclude),
 //! Add writing (fields + paste area, explicit genre + authorship),
@@ -27,10 +27,10 @@ use gpui::{
     WindowBounds, WindowOptions, div, px, rgb, size,
 };
 
-use voice_core::checker::CheckReport;
-use voice_core::corpus::{Authorship, NewSample};
-use voice_core::fingerprint::FingerprintDoc;
-use voice_core::{Store, check_draft};
+use eigenstyle_core::checker::CheckReport;
+use eigenstyle_core::corpus::{Authorship, NewSample};
+use eigenstyle_core::fingerprint::FingerprintDoc;
+use eigenstyle_core::{Store, check_draft};
 
 // Theme.
 const BG: u32 = 0x141e28;
@@ -102,7 +102,7 @@ enum Field {
 
 /// The root view: all GUI state lives here; rendering is a pure
 /// function of it plus the store.
-struct VoiceApp {
+struct EigenstyleApp {
     store: Store,
     focus_handle: FocusHandle,
     tab: Tab,
@@ -128,13 +128,13 @@ struct VoiceApp {
     profile_scroll: ScrollHandle,
 }
 
-impl VoiceApp {
-    fn new(cx: &mut Context<Self>, home: PathBuf) -> VoiceApp {
+impl EigenstyleApp {
+    fn new(cx: &mut Context<Self>, home: PathBuf) -> EigenstyleApp {
         let store = Store::open(&home).unwrap_or_else(|e| {
-            eprintln!("voice-gui: cannot open store at {}: {e}", home.display());
+            eprintln!("eigenstyle-gui: cannot open store at {}: {e}", home.display());
             std::process::exit(2);
         });
-        VoiceApp {
+        EigenstyleApp {
             store,
             focus_handle: cx.focus_handle(),
             tab: Tab::Corpus,
@@ -512,8 +512,8 @@ fn button(
     id: &'static str,
     label: &str,
     primary: bool,
-    cx: &mut Context<VoiceApp>,
-    handler: impl Fn(&mut VoiceApp, &mut Context<VoiceApp>) + 'static,
+    cx: &mut Context<EigenstyleApp>,
+    handler: impl Fn(&mut EigenstyleApp, &mut Context<EigenstyleApp>) + 'static,
 ) -> impl IntoElement {
     div()
         .id(id)
@@ -530,7 +530,7 @@ fn button(
         .child(label.to_string())
 }
 
-impl VoiceApp {
+impl EigenstyleApp {
     fn field_box(
         &self,
         field: Field,
@@ -879,10 +879,10 @@ impl VoiceApp {
             }));
         if let Some(report) = &self.check_report {
             let (verdict_text, color) = match report.verdict {
-                voice_core::checker::Verdict::Close => ("CLOSE", GOOD),
-                voice_core::checker::Verdict::Drifting => ("DRIFTING", WARN),
-                voice_core::checker::Verdict::OffVoice => ("OFF-VOICE", BAD),
-                voice_core::checker::Verdict::Unreliable => ("UNRELIABLE (under 200 words)", WARN),
+                eigenstyle_core::checker::Verdict::Close => ("CLOSE", GOOD),
+                eigenstyle_core::checker::Verdict::Drifting => ("DRIFTING", WARN),
+                eigenstyle_core::checker::Verdict::OffVoice => ("OFF-VOICE", BAD),
+                eigenstyle_core::checker::Verdict::Unreliable => ("UNRELIABLE (under 200 words)", WARN),
             };
             let mut panel = div()
                 .flex()
@@ -1013,7 +1013,7 @@ impl VoiceApp {
     }
 }
 
-impl Render for VoiceApp {
+impl Render for EigenstyleApp {
     fn render(&mut self, _window: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
         let mut tabs = div().flex().gap(px(6.)).items_center();
         for (i, tab) in Tab::all().iter().enumerate() {
@@ -1108,7 +1108,7 @@ fn main() {
             },
             move |window, cx| {
                 let view = cx.new(move |cx| {
-                    let mut app = VoiceApp::new(cx, home_for_view);
+                    let mut app = EigenstyleApp::new(cx, home_for_view);
                     app.tab = tab;
                     app
                 });

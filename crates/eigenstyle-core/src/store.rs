@@ -1,7 +1,7 @@
 //! The on-disk store: corpus, fingerprint, settings (avoid list), and
 //! the readable profile, as JSON/markdown files under one directory.
 //!
-//! - Location: `$VOICE_MCP_HOME`, else `~/.local/share/voice-mcp/`.
+//! - Location: `$EIGENSTYLE_HOME`, else `~/.local/share/eigenstyle/`.
 //! - A fresh directory is seeded from the matt-voice skill's corpus,
 //!   fingerprint, and profile (embedded at build time from `seed/`).
 //! - Writes are atomic (temp file + rename in the same directory) so a
@@ -120,18 +120,18 @@ pub struct Store {
 }
 
 impl Store {
-    /// Default store directory: `$VOICE_MCP_HOME` or
-    /// `~/.local/share/voice-mcp`.
+    /// Default store directory: `$EIGENSTYLE_HOME` or
+    /// `~/.local/share/eigenstyle`.
     pub fn default_dir() -> PathBuf {
-        if let Ok(home) = std::env::var("VOICE_MCP_HOME")
+        if let Ok(home) = std::env::var("EIGENSTYLE_HOME")
             && !home.is_empty()
         {
             return PathBuf::from(home);
         }
         if let Some(home) = std::env::home_dir() {
-            return home.join(".local").join("share").join("voice-mcp");
+            return home.join(".local").join("share").join("eigenstyle");
         }
-        PathBuf::from(".voice-mcp")
+        PathBuf::from(".eigenstyle")
     }
 
     /// Open the store at `dir`, seeding it from the skill's corpus,
@@ -306,7 +306,7 @@ mod tests {
     use super::*;
 
     fn temp_dir(tag: &str) -> PathBuf {
-        let dir = std::env::temp_dir().join(format!("voice-mcp-test-{}-{tag}", std::process::id()));
+        let dir = std::env::temp_dir().join(format!("eigenstyle-test-{}-{tag}", std::process::id()));
         let _ = fs::remove_dir_all(&dir);
         dir
     }

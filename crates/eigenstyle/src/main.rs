@@ -1,4 +1,4 @@
-//! voice-mcp — MCP stdio server for Matt Porter's voice profile.
+//! eigenstyle — MCP stdio server for Matt Porter's voice profile.
 //!
 //! Newline-delimited JSON-RPC 2.0 over stdin/stdout, following the
 //! estate's research-mcp pattern (hand-rolled envelope over
@@ -20,8 +20,8 @@ use std::path::PathBuf;
 use std::process::ExitCode;
 
 use serde_json::{Map, Value, json};
-use voice_core::corpus::{Authorship, NewSample};
-use voice_core::{
+use eigenstyle_core::corpus::{Authorship, NewSample};
+use eigenstyle_core::{
     DRAFT_TEXT_MAX_BYTES, EXEMPLAR_MAX_COUNT, SAMPLE_TEXT_MAX_BYTES, Store, VoiceError, check_draft,
 };
 
@@ -31,7 +31,7 @@ const PROTOCOL_VERSION: &str = "2025-11-25";
 const SUPPORTED_PROTOCOL_VERSIONS: &[&str] =
     &["2025-11-25", "2025-06-18", "2025-03-26", "2024-11-05"];
 /// serverInfo.name.
-const SERVER_NAME: &str = "voice-mcp";
+const SERVER_NAME: &str = "eigenstyle";
 /// serverInfo.version.
 const SERVER_VERSION: &str = "0.1.0";
 /// Instructions reported on initialize.
@@ -368,7 +368,7 @@ impl Server {
                 let stat = effective
                     .get(f)
                     .copied()
-                    .unwrap_or(voice_core::fingerprint::RefStat { mean: 0.0, sd: 0.0 });
+                    .unwrap_or(eigenstyle_core::fingerprint::RefStat { mean: 0.0, sd: 0.0 });
                 json!({
                     "name": f,
                     "mean": stat.mean,
@@ -587,7 +587,7 @@ fn read_sample_text(args: &Map<String, Value>) -> Result<(String, String), ToolF
     }
     let url = args.get("url").and_then(Value::as_str).unwrap_or("");
     Ok((
-        voice_core::fetch::fetch_url_text(url)?,
+        eigenstyle_core::fetch::fetch_url_text(url)?,
         format!("url: {url}"),
     ))
 }
@@ -608,7 +608,7 @@ fn read_bounded_file(path: &str) -> Result<String, ToolFailure> {
         .map_err(|_| ToolFailure::from(VoiceError::invalid("file_path", "file is not valid UTF-8")))
 }
 
-fn manifest_row(sample: &voice_core::Sample) -> Value {
+fn manifest_row(sample: &eigenstyle_core::Sample) -> Value {
     json!({
         "id": sample.id,
         "title": sample.title,
@@ -639,14 +639,14 @@ fn main() -> ExitCode {
     let home = match parse_home(&args) {
         Ok(h) => h,
         Err(message) => {
-            eprintln!("voice-mcp: {message}");
+            eprintln!("eigenstyle: {message}");
             return ExitCode::from(2);
         }
     };
     let store = match Store::open(&home) {
         Ok(s) => s,
         Err(e) => {
-            eprintln!("voice-mcp: cannot open store at {}: {e}", home.display());
+            eprintln!("eigenstyle: cannot open store at {}: {e}", home.display());
             return ExitCode::from(2);
         }
     };
@@ -658,7 +658,7 @@ fn main() -> ExitCode {
     match server.serve(&mut reader, &mut writer) {
         Ok(()) => ExitCode::SUCCESS,
         Err(e) => {
-            eprintln!("voice-mcp: transport failed: {e}");
+            eprintln!("eigenstyle: transport failed: {e}");
             ExitCode::FAILURE
         }
     }
@@ -669,7 +669,7 @@ mod tests {
     use super::*;
 
     fn run_session(tag: &str, input: &str) -> Vec<Value> {
-        let dir = std::env::temp_dir().join(format!("voice-mcp-unit-{tag}-{}", std::process::id()));
+        let dir = std::env::temp_dir().join(format!("eigenstyle-unit-{tag}-{}", std::process::id()));
         let _ = std::fs::remove_dir_all(&dir);
         let store = Store::open(&dir).expect("seeded store");
         let mut server = Server::new(store);

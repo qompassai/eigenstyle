@@ -1,5 +1,5 @@
 [package]
-name = "voice-gui"
+name = "eigenstyle-gui"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
@@ -8,7 +8,7 @@ description = "GPUI desktop GUI for the voice-profile corpus, fingerprint, and d
 [dependencies]
 gpui-ce.workspace = true
 gpui_ce_platform.workspace = true
-voice-core.workspace = true
+eigenstyle-core.workspace = true
 
 [lints.clippy]
 all = "warn"
