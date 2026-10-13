@@ -832,7 +832,8 @@ mod tests {
     }
 
     fn test_app(tag: &str) -> (App, PathBuf) {
-        let dir = std::env::temp_dir().join(format!("eigenstyle-tui-test-{tag}-{}", std::process::id()));
+        let dir =
+            std::env::temp_dir().join(format!("eigenstyle-tui-test-{tag}-{}", std::process::id()));
         let _ = std::fs::remove_dir_all(&dir);
         let app = App::new(dir.clone()).expect("app opens seeded store");
         (app, dir)

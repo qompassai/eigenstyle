@@ -18,11 +18,11 @@
 use std::collections::BTreeMap;
 use std::path::PathBuf;
 
-use serde_json::Value;
 use eigenstyle_core::corpus::{Authorship, Corpus, NewSample};
 use eigenstyle_core::fingerprint::FingerprintDoc;
 use eigenstyle_core::stylometry::measure;
 use eigenstyle_core::{Store, check_draft};
+use serde_json::Value;
 
 fn manifest_dir() -> PathBuf {
     PathBuf::from(env!("CARGO_MANIFEST_DIR"))

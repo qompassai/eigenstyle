@@ -1,7 +1,7 @@
 # eigenstyle — build progress
 
 Commissioned 2026-10-11 (Matt): full voice-profile MCP server with TUI and
-GPUI GUI, add-writing flows, tooling adapted from HumanifyMe / brandeigenstyle /
+GPUI GUI, add-writing flows, tooling adapted from HumanifyMe / brandvoice-mcp /
 book-writer-mcp / Eden / Arcitext. Seed: `~/workspace/skills/matt-voice/`
 (Python stylometry + checker = parity reference).
 
@@ -15,9 +15,9 @@ book-writer-mcp / Eden / Arcitext. Seed: `~/workspace/skills/matt-voice/`
   (LOO bands), checker (+ integrity + avoid-list), exemplars, URL fetch.
 - [x] 2. Parity gate: Rust engine vs Python fixtures on the seed corpus.
 - [x] 3. eigenstyle: stdio JSON-RPC server, 6 tools, protocol tests, smoke.
-- [ ] 4. eigenstyle-tui: ratatui front-end, snapshot smoke.
-- [ ] 5. eigenstyle-gui: gpui-ce 0.2.2 front-end, Xvfb smoke + screenshot.
-- [ ] 6. Gates: cargo test totals, clippy -D warnings, fmt, IDE gate on
+- [x] 4. eigenstyle-tui: ratatui front-end, snapshot smoke.
+- [x] 5. eigenstyle-gui: gpui-ce 0.2.2 front-end, Xvfb smoke + screenshot.
+- [x] 6. Gates: cargo test totals, clippy -D warnings, fmt, IDE gate on
   primo (headless nvim, live diver config), README, local commits.
 
 ## Decisions / bounds

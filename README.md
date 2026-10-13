@@ -70,7 +70,7 @@ exactly.
 - **HumanifyMe** — the editable, human-readable fingerprint, and the
   deterministic post-draft verify gate (dropped numbers / broken URLs
   in `check_draft`).
-- **brandeigenstyle** — ingest → chunk → exemplar retrieval bank
+- **brandvoice-mcp** — ingest → chunk → exemplar retrieval bank
   (`get_exemplars` serves corpus paragraphs by genre).
 - **book-writer-mcp / Eden** — per-genre style profiles (the dashboard
   shows pooled per-genre stats), and the builder flow where induced

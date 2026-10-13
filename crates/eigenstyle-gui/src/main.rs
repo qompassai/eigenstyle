@@ -131,7 +131,10 @@ struct EigenstyleApp {
 impl EigenstyleApp {
     fn new(cx: &mut Context<Self>, home: PathBuf) -> EigenstyleApp {
         let store = Store::open(&home).unwrap_or_else(|e| {
-            eprintln!("eigenstyle-gui: cannot open store at {}: {e}", home.display());
+            eprintln!(
+                "eigenstyle-gui: cannot open store at {}: {e}",
+                home.display()
+            );
             std::process::exit(2);
         });
         EigenstyleApp {
@@ -882,7 +885,9 @@ impl EigenstyleApp {
                 eigenstyle_core::checker::Verdict::Close => ("CLOSE", GOOD),
                 eigenstyle_core::checker::Verdict::Drifting => ("DRIFTING", WARN),
                 eigenstyle_core::checker::Verdict::OffVoice => ("OFF-VOICE", BAD),
-                eigenstyle_core::checker::Verdict::Unreliable => ("UNRELIABLE (under 200 words)", WARN),
+                eigenstyle_core::checker::Verdict::Unreliable => {
+                    ("UNRELIABLE (under 200 words)", WARN)
+                }
             };
             let mut panel = div()
                 .flex()

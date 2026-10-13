@@ -19,11 +19,11 @@ use std::io::{BufRead, BufReader, Read, Write};
 use std::path::PathBuf;
 use std::process::ExitCode;
 
-use serde_json::{Map, Value, json};
 use eigenstyle_core::corpus::{Authorship, NewSample};
 use eigenstyle_core::{
     DRAFT_TEXT_MAX_BYTES, EXEMPLAR_MAX_COUNT, SAMPLE_TEXT_MAX_BYTES, Store, VoiceError, check_draft,
 };
+use serde_json::{Map, Value, json};
 
 /// Newest protocol version this server negotiates.
 const PROTOCOL_VERSION: &str = "2025-11-25";
@@ -669,7 +669,8 @@ mod tests {
     use super::*;
 
     fn run_session(tag: &str, input: &str) -> Vec<Value> {
-        let dir = std::env::temp_dir().join(format!("eigenstyle-unit-{tag}-{}", std::process::id()));
+        let dir =
+            std::env::temp_dir().join(format!("eigenstyle-unit-{tag}-{}", std::process::id()));
         let _ = std::fs::remove_dir_all(&dir);
         let store = Store::open(&dir).expect("seeded store");
         let mut server = Server::new(store);
