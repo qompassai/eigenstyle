@@ -4,6 +4,7 @@ A Rust workspace that turns Matt Porter's measured writing fingerprint
 (built 2026-10-11 in the `matt-voice` skill) into a living system: an
 MCP server agents can call, a terminal UI, and a GPUI desktop GUI — all
 over one core library, all fed by a corpus you keep adding to.
+<a href="./LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="License: Apache 2.0"></a>
 
 The fingerprint is *measured*, not vibes: sentence-length distribution,
 function-word profile, punctuation rates, parentheticals, hyphenated
@@ -107,3 +108,7 @@ crates/eigenstyle-tui    ratatui TUI (eigenstyle-tui --snapshot <screen> renders
 crates/eigenstyle-gui    GPUI GUI
 screenshots/        smoke evidence (GUI corpus + fingerprint views, probe)
 ```
+
+## License
+
+This project is licensed under the [Apache License, Version 2.0](./LICENSE).
