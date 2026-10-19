@@ -1,0 +1,39 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "ai.qompass/eigenstyle",
+  "title": "Eigenstyle",
+  "description": "MCP server for a personal voice profile: corpus, fingerprint, and draft-checking tools.",
+  "version": "0.1.0",
+  "websiteUrl": "https://qompass.ai/mcp/eigenstyle",
+  "repository": {
+    "url": "https://github.com/qompassai/eigenstyle",
+    "source": "github"
+  },
+  "packages": [
+    {
+      "registryType": "mcpb",
+      "identifier": "https://github.com/qompassai/eigenstyle/releases/download/v0.1.0/eigenstyle-mcp-0.1.0-linux-x64.mcpb",
+      "fileSha256": "65ca547eafeb17c6e47621f47163694f9708a23627a625579c58f75c8c72c20d",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ],
+  "_meta": {
+    "io.modelcontextprotocol.registry/publisher-provided": {
+      "ai.qompass/identity": {
+        "publisher": "Qompass AI",
+        "about": "https://qompass.ai/about",
+        "mcpCatalog": "https://qompass.ai/mcp",
+        "contact": "mailto:map@qompass.ai",
+        "githubOrganization": "https://github.com/qompassai",
+        "githubMaintainer": "https://github.com/PhaedrusFlow",
+        "gitlabMaintainer": "https://gitlab.com/PhaedrusFlow",
+        "cratesIoMaintainer": "https://crates.io/users/PhaedrusFlow",
+        "huggingFace": "https://huggingface.co/qompass",
+        "orcid": "https://orcid.org/0000-0002-0302-4812",
+        "zenodoCommunity": "https://zenodo.org/communities/qompassai"
+      }
+    }
+  }
+}
