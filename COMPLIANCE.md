@@ -8,7 +8,17 @@ the estate's conformance records alongside the sweep's raw evidence;
 this file reproduces its rows with this server's status per row. The
 same table is published at https://qompass.ai/solutions/mcp/eigenstyle/
 
-**Standing.** Not probed in the 2026-10-20 Inspector sweep. Deferred — the tool surface is source-verified, but no binary is built in the estate yet.
+**Standing (updated 2026-10-28, for the 1.0.0 release).** The
+server is built and gated: as of 0.2.0 it runs on rmcp 3.8 and
+speaks the modern protocol era only (2026-07-28) — `server/discover`
+opens sessions, per-request `_meta` carries the protocol version,
+and legacy `initialize` contact is refused with the typed `-32022`
+error. The in-tree stdio smoke suite (`crates/eigenstyle/tests/mcp_smoke.rs`)
+exercises that surface end to end, and 1.0.0 was re-gated on both
+estate machines. The per-row statuses below still read **Not
+probed**: they record the 2026-10-20 Inspector sweep, and no new
+Inspector sweep has been run against the migrated binary — the
+rows are not re-marked on smoke-suite evidence alone.
 
 Status vocabulary: **Pass** (evidence satisfies the row) · **Partial**
 (partly adopted) · **Gap** (evidence shows the row unmet) · **Not

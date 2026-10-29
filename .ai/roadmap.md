@@ -54,21 +54,21 @@ How to work this roadmap (any agent): run `bloch task start R-xxx --agent <you>`
 - [ ] R-501 README documents install, usage, and verification
   - verify: test -f README.md
   - evidence:
-- [ ] R-502 CHANGELOG records every user-facing change
+- [x] R-502 CHANGELOG records every user-facing change
   - verify: test -f CHANGELOG.md
-  - evidence:
+  - evidence: 1 verify commands, all exit 0 at 2026-10-29T06:09:17Z
 - [ ] R-503 Tool reference documents every tool, schema, annotation, and error kind
   - verify: test -f README.md
   - evidence:
 
 ## Phase 6 — Release v1
-- [ ] R-601 Version is bumped to 1.0.0 and the changelog records the release
+- [x] R-601 Version is bumped to 1.0.0 and the changelog records the release
   - verify: grep -q 'version = "1.0.0"' Cargo.toml
-  - evidence:
-- [ ] R-602 Clean-environment install and run is verified
+  - evidence: 1 verify commands, all exit 0 at 2026-10-29T06:09:17Z
+- [x] R-602 Clean-environment install and run is verified
   - verify: cargo build
-  - evidence:
-- [ ] R-603 Release artefacts are built from a clean checkout and checksummed
+  - evidence: 1 verify commands, all exit 0 at 2026-10-29T06:09:21Z
+- [x] R-603 Release artefacts are built from a clean checkout and checksummed
   - verify: cargo build
-  - evidence:
+  - evidence: 1 verify commands, all exit 0 at 2026-10-29T06:09:22Z
 

@@ -38,9 +38,18 @@ corpus (6 pieces, 7,674 words), fingerprint, and readable profile.
 | `list_corpus` | The corpus manifest: metadata, word counts, included flags, totals. |
 | `recompute_fingerprint` | Recompute from included samples and re-derive the bands. `dry_run: true` previews the induced feature deltas and band shifts without saving — review before you apply. |
 
-Protocol: newline-delimited JSON-RPC 2.0 over stdio, the estate's
-research-mcp pattern. Fail-closed throughout: malformed frames,
+Protocol: MCP over stdio on rmcp 3.8 (the official Rust MCP SDK),
+modern era only (protocol version 2026-07-28). Sessions open with
+`server/discover` and every request carries its protocol version in
+`_meta` — there is no `initialize` handshake. Legacy-era contact is
+refused at the stdio front door with the typed `-32022`
+unsupported-version error. Fail-closed throughout: malformed frames,
 unknown tools, strict argument schemas, named size bounds everywhere.
+
+Versions (1.0 release): the MCP server `eigenstyle`, the TUI, and
+the GUI are 1.0.0. `eigenstyle-core` stays at 0.1.0 — that version
+is already published on crates.io and does not move with this
+release.
 
 ## Adding your writing
 
