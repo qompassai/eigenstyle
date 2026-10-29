@@ -1,6 +1,6 @@
 [package]
 name = "eigenstyle"
-version.workspace = true
+version = "0.2.0"
 edition.workspace = true
 license.workspace = true
 description = "MCP stdio server for Matt Porter's voice profile (corpus, fingerprint, draft checker)"
@@ -9,6 +9,11 @@ description = "MCP stdio server for Matt Porter's voice profile (corpus, fingerp
 serde.workspace = true
 serde_json.workspace = true
 eigenstyle-core.workspace = true
+# WS1 (D-113): framing moves to the official Rust MCP SDK, modern era
+# only (2026-07-28). The version pin is the fleet pin — one rmcp
+# version across every estate server; bumps are single fleet events.
+rmcp = { version = "=3.8.0", default-features = false, features = ["server"] }
+tokio = { version = "1", features = ["io-std", "io-util", "macros", "rt-multi-thread", "sync"] }
 
 [lints.clippy]
 all = "warn"

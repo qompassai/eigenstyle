@@ -1,15 +1,29 @@
 //! End-to-end stdio smoke: spawn the real `eigenstyle` binary against a
-//! scratch store and drive it like an MCP client — initialize,
-//! tools/list, every tool once, an ingest → recompute (dry-run, then
-//! apply) → check round trip, and adversarial frames (malformed JSON,
-//! unknown tool, bound-violating ingest). Store state must persist
-//! across a server restart.
+//! scratch store and drive it like a modern-era MCP client —
+//! `server/discover` first, per-request `_meta` on everything after,
+//! every tool once, an ingest → recompute (dry-run, then apply) →
+//! check round trip — plus the adversarial battery: legacy
+//! `initialize` contact refused with the typed `-32022`, missing or
+//! legacy `_meta` refused, malformed frames, unknown tool, and
+//! bound-violating ingests. Store state must persist across a server
+//! restart. (Modernized in WS1; the pre-rmcp version of this file
+//! drove the legacy initialize handshake.)
 
 use std::io::{BufRead, BufReader, Write};
 use std::path::PathBuf;
 use std::process::{Child, ChildStdin, ChildStdout, Command, Stdio};
 
 use serde_json::{Value, json};
+
+const MODERN: &str = "2026-07-28";
+
+fn meta(version: &str) -> Value {
+    json!({
+        "io.modelcontextprotocol/protocolVersion": version,
+        "io.modelcontextprotocol/clientInfo": {"name": "smoke", "version": "0"},
+        "io.modelcontextprotocol/clientCapabilities": {}
+    })
+}
 
 struct Client {
     child: Child,
@@ -51,7 +65,9 @@ impl Client {
         }
     }
 
-    fn call(&mut self, method: &str, params: Value) -> Value {
+    /// A request exactly as given — no `_meta` stamping. For probes
+    /// that exercise the era machinery itself.
+    fn call_unstamped(&mut self, method: &str, params: Value) -> Value {
         self.next_id += 1;
         let id = self.next_id;
         let response = self
@@ -64,8 +80,33 @@ impl Client {
         response
     }
 
+    /// A modern-era request: `_meta` stamped into params.
+    fn call(&mut self, method: &str, params: Value) -> Value {
+        let mut params = params;
+        params
+            .as_object_mut()
+            .expect("params object")
+            .insert("_meta".to_string(), meta(MODERN));
+        self.call_unstamped(method, params)
+    }
+
+    fn discover(&mut self) -> Value {
+        let response = self.call("server/discover", json!({}));
+        let result = &response["result"];
+        assert_eq!(
+            result["supportedVersions"],
+            json!([MODERN]),
+            "discover advertises exactly the modern version: {response}"
+        );
+        assert_eq!(
+            result["_meta"]["io.modelcontextprotocol/serverInfo"]["name"],
+            "eigenstyle"
+        );
+        response
+    }
+
     fn tool(&mut self, name: &str, arguments: Value) -> Value {
-        let response = self.call("tools/call", json!({"name": name, "arguments": arguments}));
+        let response = self.tool_raw(name, arguments);
         let text = response["result"]["content"][0]["text"]
             .as_str()
             .expect("tool text content");
@@ -99,12 +140,27 @@ const NEW_PROSE: &str = "Whether in the operating room or in the policy memo, th
 fn full_client_round_trip() {
     let home = scratch_home("roundtrip");
     let mut client = Client::spawn(&home);
-    let init = client.call(
-        "initialize",
-        json!({"protocolVersion": "2025-06-18", "capabilities": {}, "clientInfo": {"name": "smoke", "version": "0"}}),
+    client.discover();
+
+    // The catalog is exactly the six baseline tools.
+    let list = client.call("tools/list", json!({}));
+    let names: Vec<&str> = list["result"]["tools"]
+        .as_array()
+        .expect("tools array")
+        .iter()
+        .filter_map(|t| t["name"].as_str())
+        .collect();
+    assert_eq!(
+        names,
+        [
+            "check_draft",
+            "get_exemplars",
+            "get_profile",
+            "ingest_sample",
+            "list_corpus",
+            "recompute_fingerprint"
+        ]
     );
-    assert_eq!(init["result"]["protocolVersion"], "2025-06-18");
-    assert_eq!(init["result"]["serverInfo"]["name"], "eigenstyle");
 
     // Seeded corpus is visible.
     let corpus = client.tool("list_corpus", json!({}));
@@ -170,8 +226,73 @@ fn full_client_round_trip() {
 
     // State persists across a restart: 7 samples, recomputed bands on disk.
     let mut client = Client::spawn(&home);
+    client.discover();
     let corpus = client.tool("list_corpus", json!({}));
     assert_eq!(corpus["sample_count"], 7);
+    client.close();
+    let _ = std::fs::remove_dir_all(&home);
+}
+
+#[test]
+fn legacy_contact_is_refused_and_the_server_survives() {
+    let home = scratch_home("refusal");
+    let mut client = Client::spawn(&home);
+
+    // initialize at any legacy version: the designed typed refusal.
+    for version in ["2025-06-18", "2025-03-26", "2024-11-05"] {
+        let response = client.call_unstamped(
+            "initialize",
+            json!({"protocolVersion": version, "capabilities": {}, "clientInfo": {"name": "legacy", "version": "0"}}),
+        );
+        assert_eq!(response["error"]["code"], -32022, "initialize {version}");
+        assert_eq!(response["error"]["message"], "Unsupported protocol version");
+        assert_eq!(response["error"]["data"]["requested"], version);
+        assert_eq!(response["error"]["data"]["supported"], json!([MODERN]));
+    }
+    // Even an initialize claiming the modern version is refused:
+    // the modern era has no initialize handshake at all.
+    let response = client.call_unstamped(
+        "initialize",
+        json!({"protocolVersion": MODERN, "capabilities": {}, "clientInfo": {"name": "x", "version": "0"}}),
+    );
+    assert_eq!(response["error"]["code"], -32022);
+
+    // A first request with no _meta at all is refused by the era
+    // machinery (missing request metadata), not served.
+    let response = client.call_unstamped("tools/list", json!({}));
+    assert_eq!(response["error"]["code"], -32602);
+    assert!(
+        response["error"]["message"]
+            .as_str()
+            .unwrap_or("")
+            .contains("_meta"),
+        "metadata refusal names the missing field: {response}"
+    );
+
+    // A first request stamped with a legacy version is refused -32022.
+    let mut params = json!({});
+    params
+        .as_object_mut()
+        .expect("obj")
+        .insert("_meta".to_string(), meta("2025-06-18"));
+    let response = client.call_unstamped("tools/list", params);
+    assert_eq!(response["error"]["code"], -32022);
+    assert_eq!(response["error"]["data"]["supported"], json!([MODERN]));
+
+    // After every refusal the same process still serves modern work.
+    client.discover();
+    let corpus = client.tool("list_corpus", json!({}));
+    assert_eq!(corpus["sample_count"], 6);
+
+    // initialize mid-session is still refused, and changes nothing.
+    let response = client.call_unstamped(
+        "initialize",
+        json!({"protocolVersion": "2025-06-18", "capabilities": {}, "clientInfo": {"name": "legacy", "version": "0"}}),
+    );
+    assert_eq!(response["error"]["code"], -32022);
+    let corpus = client.tool("list_corpus", json!({}));
+    assert_eq!(corpus["sample_count"], 6);
+
     client.close();
     let _ = std::fs::remove_dir_all(&home);
 }
@@ -184,17 +305,41 @@ fn adversarial_frames_and_bounds() {
     // Malformed JSON yields -32700, and the server stays alive.
     let response = client.send_raw("{not json").expect("parse error response");
     assert_eq!(response["error"]["code"], -32700);
+
+    // A non-object request yields -32600.
+    let response = client.send_raw("[1,2,3]").expect("response");
+    assert_eq!(response["error"]["code"], -32600);
+
+    // Unknown method yields -32601.
     let response = client
         .send_raw("{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"bogus\"}")
         .expect("response");
     assert_eq!(response["error"]["code"], -32601);
 
-    // Unknown tool is a params error, not a crash.
+    // An oversized line yields -32700 and the next request is served.
+    let big = "x".repeat(4 * 1024 * 1024 + 16);
+    let response = client.send_raw(&big).expect("oversize response");
+    assert_eq!(response["error"]["code"], -32700);
+    assert_eq!(
+        response["error"]["message"],
+        "request line exceeds size bound"
+    );
+
+    client.discover();
+
+    // Unknown tool is a params error with the baseline's message.
     let response = client.tool_raw("nuke_corpus", json!({}));
     assert_eq!(response["error"]["code"], -32602);
+    assert_eq!(response["error"]["message"], "unknown tool: nuke_corpus");
 
-    // Ingest bound violations come back as isError content, not panics:
-    // empty text (below floor), missing authorship, two body sources.
+    // Unknown arguments are rejected before the core sees them.
+    let response = client.tool_raw("list_corpus", json!({"surprise": true}));
+    assert_eq!(response["error"]["code"], -32602);
+    assert_eq!(response["error"]["message"], "unknown argument: surprise");
+
+    // Ingest bound violations come back as errors, not panics:
+    // empty text (below floor), missing authorship, two body
+    // sources, invented authorship value.
     for arguments in [
         json!({"title": "t", "genre": "letter", "authorship": "sole", "text": ""}),
         json!({"title": "t", "genre": "letter", "text": NEW_PROSE}),
