@@ -35,7 +35,7 @@ use serde_json::{Map, Value, json};
 /// Maximum bytes read from a file argument.
 const MAX_FILE_BYTES: usize = SAMPLE_TEXT_MAX_BYTES;
 /// Instructions reported for the server (unchanged from the baseline).
-const INSTRUCTIONS: &str = "Matt Porter's voice profile: corpus of his writing, measured stylometric \
+const INSTRUCTIONS: &str = "The Qompass AI voice profile: corpus of writing samples, measured stylometric \
     fingerprint, deterministic draft checker. Ingesting never recomputes the fingerprint; recompute is \
     explicit (dry_run previews the induced changes first).";
 

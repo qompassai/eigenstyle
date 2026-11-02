@@ -1,6 +1,6 @@
 # eigenstyle — your voice profile as a tool
 
-A Rust workspace that turns Matt Porter's measured writing fingerprint
+A Rust workspace that turns a measured writing fingerprint
 (built 2026-10-11 in the `matt-voice` skill) into a living system: an
 MCP server agents can call, a terminal UI, and a GPUI desktop GUI — all
 over one core library, all fed by a corpus you keep adding to.

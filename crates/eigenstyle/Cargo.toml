@@ -3,7 +3,7 @@ name = "eigenstyle"
 version = "1.0.0"
 edition.workspace = true
 license.workspace = true
-description = "MCP stdio server for Matt Porter's voice profile (corpus, fingerprint, draft checker)"
+description = "MCP stdio server for the Qompass AI voice profile (corpus, fingerprint, draft checker)"
 
 [dependencies]
 serde.workspace = true

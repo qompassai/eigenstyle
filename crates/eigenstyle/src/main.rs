@@ -1,4 +1,4 @@
-//! eigenstyle — MCP server for Matt Porter's voice profile.
+//! eigenstyle — MCP server for the Qompass AI voice profile.
 //!
 //! check_draft · get_exemplars · get_profile · ingest_sample ·
 //! list_corpus · recompute_fingerprint
