@@ -5,6 +5,8 @@ A Rust workspace that turns a measured writing fingerprint
 MCP server agents can call, a terminal UI, and a GPUI desktop GUI — all
 over one core library, all fed by a corpus you keep adding to.
 <a href="./LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="License: Apache 2.0"></a>
+<a href="https://crates.io/crates/eigenstyle"><img src="https://img.shields.io/crates/v/eigenstyle.svg" alt="crates.io"></a>
+<a href="https://registry.modelcontextprotocol.io/v0/servers/ai.qompass%2Feigenstyle/versions"><img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fregistry.modelcontextprotocol.io%2Fv0%2Fservers%2Fai.qompass%252Feigenstyle%2Fversions&query=%24.servers%5B0%5D.server.version&label=MCP%20Registry" alt="MCP Registry"></a>
 
 The fingerprint is *measured*, not vibes: sentence-length distribution,
 function-word profile, punctuation rates, parentheticals, hyphenated
