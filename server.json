@@ -3,7 +3,7 @@
   "name": "ai.qompass/eigenstyle",
   "title": "Eigenstyle",
   "description": "MCP server for a personal voice profile: corpus, fingerprint, and draft-checking tools.",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "websiteUrl": "https://qompass.ai/solutions/eigenstyle/",
   "repository": {
     "url": "https://github.com/qompassai/eigenstyle",
@@ -33,6 +33,10 @@
         "huggingFace": "https://huggingface.co/qompass",
         "orcid": "https://orcid.org/0000-0002-0302-4812",
         "zenodoCommunity": "https://zenodo.org/communities/qompassai"
+      },
+      "ai.qompass/eigenstyle": {
+        "agentCard": ".well-known/agent-card.json",
+        "versionNote": "Server version of record is 1.0.4: the installed binary reports eigenstyle 1.0.4 to server/discover (D-1543 check), the published crates.io eigenstyle crate is 1.0.4, and the staged mcpb manifest is 1.0.4. This tree's Cargo manifests still read 1.0.0, and the packages entry still references the v1.0.0 mcpb asset because no 1.0.4 mcpb bundle is recorded; no 1.0.4 package is asserted."
       }
     }
   }
