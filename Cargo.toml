@@ -14,7 +14,7 @@ license = "Apache-2.0"
 # eigenstyle-tui inherit it). eigenstyle-core is pinned explicitly to
 # 0.1.0 in its own manifest — that version is already published on
 # crates.io and does not move with this release.
-version = "1.0.0"
+version = "1.0.4"
 
 [workspace.dependencies]
 crossterm = "0.28"
